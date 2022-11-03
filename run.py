@@ -12,7 +12,9 @@ print(f"Hi {insert_name}, get ready to play BattleShips!")
 # board set up
 game_board = []
 
-# need to fix grid layout so comma,quotes and inner square brackets are removed. 
+# need to fix grid layout so comma,quotes and 
+# inner square brackets
+# are removed. 
 # .replace and . split are not working!
 for row in range(0, 6):
     game_board.append(["O"] * 6)
@@ -22,8 +24,8 @@ def print_game_board(game_board):
     for row in game_board:
         print(row)
 
-print_game_board(game_board)
 
+print_game_board(game_board)
 
 
 # function to randomly generate computers guess
@@ -35,8 +37,8 @@ def computer_row_guess(game_board):
 def computer_col_guess(game_board):
     return random.randint(0, 6)
 
-print(computer_row_guess(game_board))
-print(computer_col_guess(game_board))
+print(f"Computer guessed row: {computer_row_guess(game_board)}")
+print(f"Computer guessed column: {computer_col_guess(game_board)}")
 
 # win - function first to hit all 5
 # count-down function - user has 20 goes at guessing (20/36 to find 5...)
