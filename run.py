@@ -11,8 +11,13 @@ print(f"Hi {insert_name}, get ready to play BattleShips!")
 game_board = []
 
 #need to fix grid layout so each row is on a new line
-for x in range(0, 6):
-    game_board.append(["O"] * 6)
-    print(game_board)
+for row in range(0,6):
+    game_board.append(["O"] *6)
+
+def print_game_board(game_board):
+    for row in game_board:
+        print(row)
+
+print_game_board(game_board)
 
 
