@@ -52,7 +52,35 @@ computer_ship_col = computer_col_guess(game_board)
 # invalid user input/error options if (1)Not an integer 
 # elif (2) Integer not in range. else(3)Guessed that integer combo already
 
-#data_str = input("Enter your coordinates here:\n")
+# print user prompt message
+print("\nCoordinates should be 2 numbers seperated by a comma. A number between 0 - 5")
+print("Example:[3, 5] \n")
+2
+#user_guess = (f"[{input('Enter your row here: ')} , {input('Enter your column here: ')}]")
+user_guess_row = input('Enter your row here: ')
+user_guess_column = input ('Enter your column here: ')
+print(f"[{user_guess_row} , {user_guess_column}]")
+
+if user_guess_row.isdigit() and user_guess_column.isdigit():#tried adding and in range(5)... didn't work
+    print('Provided value is an integer in the correct range')
+    #user_guess = int(integer)
+    #print(user_guess)
+else:
+    print('Provided value is not an integer')
+    #continue not properly in loop
+
+ #   try:
+  #      [int(value) for value in values]
+   #     if len(values) != 2:
+    #        raise ValueError(
+      #          f"Exactly 6 values required, you provided {len(values)}"
+     #       )
+      #      elif 
+    #except ValueError as e:
+     #   print(f"Invalid data: {e}, please try again.\n")
+      #  return False
+
+   # return True
 
 
 
