@@ -56,7 +56,7 @@ computer_ship_col = computer_col_guess(game_board)
 # print user prompt message
 print("\nCoordinates should be 2 numbers seperated by a comma. A number between 0 - 5")
 print("Example:[3, 5] \n")
-2
+
 #user_guess = (f"[{input('Enter your row here: ')} , {input('Enter your column here: ')}]")
 user_guess_row = input('Enter your row here: ')
 user_guess_column = input('Enter your column here: ')
@@ -67,8 +67,11 @@ if user_guess_row.isdigit() and user_guess_column.isdigit(): #tried adding and i
     #user_guess = int(integer)
     #print(user_guess)
 else:
-    print('Provided value is not an integer')
-    #continue not properly in loop
+    if (user_guess_row > range(5)) or (user_guess_column > range(5)):
+        print ("That coordinate is not on the grid.")
+    else:
+        print('Provided value is not an integer')
+        #continue not properly in loop
 
  #   try:
   #      [int(value) for value in values]
