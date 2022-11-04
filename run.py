@@ -37,8 +37,7 @@ def computer_row_guess(game_board):
 def computer_col_guess(game_board):
     return random.randint(0, 5)
 
-print(f"Computer guessed row: {computer_row_guess(game_board)}")
-print(f"Computer guessed column: {computer_col_guess(game_board)}")
+print(f"Computer guessed coordinates: [{computer_row_guess(game_board)}, {computer_col_guess(game_board)}]")
 
 # Store computers guess 
 computer_ship_row = computer_row_guess(game_board)
@@ -52,6 +51,8 @@ computer_ship_col = computer_col_guess(game_board)
 # users guess is stored so they can't guess same numbers again
 # invalid user input/error options if (1)Not an integer 
 # elif (2) Integer not in range. else(3)Guessed that integer combo already
+
+#data_str = input("Enter your coordinates here:\n")
 
 
 
