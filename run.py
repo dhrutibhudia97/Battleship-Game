@@ -37,6 +37,7 @@ def computer_row_guess(game_board):
 def computer_col_guess(game_board):
     return random.randint(0, 5)
 
+
 print(f"Computer guessed coordinates: [{computer_row_guess(game_board)}, {computer_col_guess(game_board)}]")
 
 # Store computers guess 
@@ -58,10 +59,10 @@ print("Example:[3, 5] \n")
 2
 #user_guess = (f"[{input('Enter your row here: ')} , {input('Enter your column here: ')}]")
 user_guess_row = input('Enter your row here: ')
-user_guess_column = input ('Enter your column here: ')
+user_guess_column = input('Enter your column here: ')
 print(f"[{user_guess_row} , {user_guess_column}]")
 
-if user_guess_row.isdigit() and user_guess_column.isdigit():#tried adding and in range(5)... didn't work
+if user_guess_row.isdigit() and user_guess_column.isdigit(): #tried adding and in range(5)... didn't work
     print('Provided value is an integer in the correct range')
     #user_guess = int(integer)
     #print(user_guess)
@@ -82,6 +83,12 @@ else:
 
    # return True
 
+if user_guess_row == computer_ship_row and user_guess_column == computer_ship_col:
+    print("Congratulations you hit my battleship :D")
+else:
+    print("Aww, you missed my battleship! :(")
+    game_board[int(user_guess_row)][int(user_guess_column)] = "X"
+    print_game_board(game_board)
 
 
 
