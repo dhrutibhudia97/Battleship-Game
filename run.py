@@ -32,13 +32,17 @@ print_game_board(game_board)
 # random row and ran column number (between 1-6).abs
 
 def computer_row_guess(game_board):
-    return random.randint(0, 6)
+    return random.randint(0, 5)
 
 def computer_col_guess(game_board):
-    return random.randint(0, 6)
+    return random.randint(0, 5)
 
 print(f"Computer guessed row: {computer_row_guess(game_board)}")
 print(f"Computer guessed column: {computer_col_guess(game_board)}")
+
+# Store computers guess 
+computer_ship_row = computer_row_guess(game_board)
+computer_ship_col = computer_col_guess(game_board)
 
 # win - function first to hit all 5
 # count-down function - user has 20 goes at guessing (20/36 to find 5...)
