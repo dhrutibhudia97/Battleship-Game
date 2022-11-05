@@ -24,10 +24,12 @@ for row in range(0, 6):
     
 
 def print_user_board(USER_BOARD):
-    print('  0    1    2    3    4    5')
-    print('------------------------------')
+    print('   0 1 2 3 4 5')
+    print('---------------')
+    row_num = 0
     for row in USER_BOARD:
-        print(row)
+        print("%d |%s|" % (row_num, "|".join(row)))
+        row_num += 1
 
 
 print_user_board(USER_BOARD)
