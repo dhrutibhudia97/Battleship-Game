@@ -148,8 +148,8 @@ def user_score(board):
     score = 0
     for row in board:
         for column in row:
-            if column == "X"@
-            score += 1
+            if column == "X":
+                score += 1
     return score
 
 # similar to switch case... get user results...
