@@ -21,8 +21,11 @@ COMPUTERS_BOARD = []
 # .replace and . split are not working!
 for row in range(0, 6):
     USER_BOARD.append(["O"] * 6)
+    
 
 def print_user_board(USER_BOARD):
+    print('  0    1    2    3    4    5')
+    print('------------------------------')
     for row in USER_BOARD:
         print(row)
 
