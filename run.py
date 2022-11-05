@@ -20,7 +20,7 @@ COMPUTERS_BOARD = []
 # are removed.
 # .replace and . split are not working!
 for row in range(0, 6):
-    USER_BOARD.append(["O"] * 6)
+    USER_BOARD.append([" "] * 6)
     
 print('\n')
 
@@ -144,13 +144,19 @@ user_input()
 
 
 #score tally
-def user_score(board):
+def user_score(COMPUTERS_BOARD):
     score = 0
-    for row in board:
+    for row in COMPUTERS_BOARD:
         for column in row:
             if column == "X":
                 score += 1
     return score
+
+# turns left to guess on computers hidden board
+computers_ships(COMPUTERS_BOARD)
+turns_left = 20
+print(COMPUTERS_BOARD)
+print(USER_BOARD)
 
 # similar to switch case... get user results...
 # if computer_guess == user guess
