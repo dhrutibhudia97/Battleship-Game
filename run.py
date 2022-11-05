@@ -9,44 +9,47 @@ print("This is a game of Battleships")
 insert_name = input("Enter your name here: \n")
 print(f"Hi {insert_name}, get ready to play BattleShips!")
 
-# board set up
-game_board = []
+# user board set up
+USER_BOARD = []
+
+# hidden computer board
+COMPUTERS_BOARD = []
 
 # need to fix grid layout so comma,quotes and
 # inner square brackets
 # are removed.
 # .replace and . split are not working!
 for row in range(0, 6):
-    game_board.append(["O"] * 6)
+    USER_BOARD.append(["O"] * 6)
 
 
-def print_game_board(game_board):
-    for row in game_board:
+def print_game_board(USER_BOARD):
+    for row in USER_BOARD:
         print(row)
 
 
-print_game_board(game_board)
+print_game_board(USER_BOARD)
 
 
 # function to randomly generate computers guess
 # random row and ran column number (between 1-6).abs
 
 
-def computer_row_guess(game_board):
+def computer_row_guess(USER_BOARD):
     return random.randint(0, 5)
 
 
-def computer_col_guess(game_board):
+def computer_col_guess(USER_BOARD):
     return random.randint(0, 5)
 
 
 print(
-    f"Computer guessed coordinates: [{computer_row_guess(game_board)}, {computer_col_guess(game_board)}]"
+    f"Computer guessed coordinates: [{computer_row_guess(USER_BOARD)}, {computer_col_guess(USER_BOARD)}]"
 )
 
 # Store computers guess
-computer_ship_row = computer_row_guess(game_board)
-computer_ship_col = computer_col_guess(game_board)
+computer_ship_row = computer_row_guess(USER_BOARD)
+computer_ship_col = computer_col_guess(USER_BOARD)
 
 # win - function first to hit all 5
 # count-down function - user has 20 goes at guessing (20/36 to find 5...)
@@ -74,7 +77,7 @@ if (
         print("number is not on the grid")
     # user_guess = int(integer)
     # print(user_guess)
-    if (user_guess_row > 5) or (user_guess_column > 5):
+    if (user_guess_row) or (user_guess_column): #> not supported between str and int
         print("That coordinate is not on the grid.")
 else:
     print("Provided value is not an integer")
@@ -97,8 +100,8 @@ if user_guess_row == computer_ship_row and user_guess_column == computer_ship_co
     print("Congratulations you hit my battleship :D")
 else:
     print("Aww, you missed my battleship! :(")
-    game_board[int(user_guess_row)][int(user_guess_column)] = "X"
-    print_game_board(game_board)
+    USER_BOARD[int(user_guess_row)][int(user_guess_column)] = "X"
+    print_game_board(USER_BOARD)
 
 
 # similar to switch case... get user results...
