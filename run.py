@@ -22,8 +22,10 @@ COMPUTERS_BOARD = []
 for row in range(0, 6):
     USER_BOARD.append(["O"] * 6)
     
+print('\n')
 
 def print_user_board(USER_BOARD):
+    print('USER BOARD: ')
     print('   0 1 2 3 4 5')
     print('---------------')
     row_num = 0
@@ -31,8 +33,9 @@ def print_user_board(USER_BOARD):
         print("%d |%s|" % (row_num, "|".join(row)))
         row_num += 1
 
-
 print_user_board(USER_BOARD)
+
+print("\n")
 
 
 # computer hidden game board
@@ -40,8 +43,13 @@ for row in range(0, 6):
     COMPUTERS_BOARD.append(["*"] * 6)
 
 def print_computer_board(COMPUTERS_BOARD):
+    print('COMPUTER BOARD: ')
+    print('   0 1 2 3 4 5')
+    print('---------------')
+    row_num = 0
     for row in COMPUTERS_BOARD:
-        print(row)
+        print("%d |%s|" % (row_num, "|".join(row)))
+        row_num += 1
 
 print_computer_board(COMPUTERS_BOARD)
 
