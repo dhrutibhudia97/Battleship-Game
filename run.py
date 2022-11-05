@@ -1,4 +1,4 @@
-import random
+from random import randint
 
 # Your code goes here.
 # You can delete these comments, but do not change the name of this file
@@ -25,7 +25,7 @@ for row in range(0, 6):
 print('\n')
 
 def print_user_board(USER_BOARD):
-    print('USER BOARD: ')
+    print(f"{insert_name}'s BOARD: ")
     print('   0 1 2 3 4 5')
     print('---------------')
     row_num = 0
@@ -57,25 +57,26 @@ print_computer_board(COMPUTERS_BOARD)
 # function to randomly generate computers guess
 # random row and ran column number (between 1-6).abs
 
+#get computer random generated ship location
+def computers_ships(COMPUTERS_BOARD):
+    for ship in range(5):
+        computer_row = randint(0,6)
+        computer_col = randint(0,6)
+        while COMPUTERS_BOARD[computer_row][computer_col] == "X":
+            computer_row = randint(0,6)
+            computer_col = randint(0,6)
+        COMPUTERS_BOARD[computer_row][computer_col] = "X"
 
-def computer_guesses(USER_BOARD):
-    for guess in range(5):
-        computer_row_guess = randint(0,6)
-        computer_col_guess = randint(0,6)
-        while USER_BOARD[computer_row_guess][computer_col_guess] =="X":
-            computer_row_guess = randint(0,6)
-            computer_col_guess = randint(0,6)
-        USER_BOARD[computer_row_guess][computer_col_guess] = "X"
 
-
-
+# 
+#print_computer_board(COMPUTERS_BOARD)
 #print(f"Computer guessed coordinates: [{computer_row_guess(USER_BOARD)}, {computer_col_guess(USER_BOARD)}]")
 
-print(computer_guesses(USER_BOARD))
+#print(computer_guesses(USER_BOARD))
 
 # Store computers guess
-computer_ship_row = computer_row_guess(USER_BOARD)
-computer_ship_col = computer_col_guess(USER_BOARD)
+#computer_ship_row = computer_row_guess(USER_BOARD)
+#computer_ship_col = computer_col_guess(USER_BOARD)
 
 # win - function first to hit all 5
 # count-down function - user has 20 goes at guessing (20/36 to find 5...)
@@ -87,26 +88,38 @@ computer_ship_col = computer_col_guess(USER_BOARD)
 # elif (2) Integer not in range. else(3)Guessed that integer combo already
 
 # print user prompt message
-print("\nCoordinates should be 2 numbers seperated by a comma. A number between 0 - 5")
+print("\nCoordinates should be 2 numbers (between 0 - 5) seperated by a comma.")
 print("Example:[3, 5] \n")
 
 # user_guess = (f"[{input('Enter your row here: ')} , {input('Enter your column here: ')}]")
-user_guess_row = input("Enter your row here: ")
-user_guess_column = input("Enter your column here: ")
-print(f"[{user_guess_row} , {user_guess_column}]")
+def user_input():
+    user_guess_row = input("Enter your row here: ")
+    user_guess_column = input("Enter your column here: ")
+    print(f"[{user_guess_row} , {user_guess_column}]")
+    return int(user_guess_row), int(user_guess_column)
 
-if (
-    user_guess_row.isdigit() and user_guess_column.isdigit()
-):  # tried adding and in range(5)... didn't work
-    print("Provided value is an integer")
-    if int(user_guess_row) > 5 and int(user_guess_column) > 5:
-        print("number is not on the grid")
+    #if (
+       # user_guess_row.isdigit() and user_guess_column.isdigit()):  
+        # tried adding and in range(5)... didn't work
+     #   print("Provided value is an integer")
+      #  while user_guess_row > 6:
+       #     print("Please enter valid row number between 0 - 5")
+        #    user_guess_row = input("Enter your row here: ")
+    #    while user_guess_column > 6:
+     #       print("Please enter valid column number between 0 - 5")
+      #      user_guess_column = input("Enter your column here: ")
+       # return int(user_guess_row), int(user_guess_column)
+        #print(f"{user_guess_row}, {user_guess_column}")
+
+user_input()
+    # if int(user_guess_row) > 5 and int(user_guess_column) > 5:
+    #    print("number is not on the grid")
     # user_guess = int(integer)
     # print(user_guess)
-    if (user_guess_row) or (user_guess_column): #> not supported between str and int
-        print("That coordinate is not on the grid.")
-else:
-    print("Provided value is not an integer")
+    #if (user_guess_row) or (user_guess_column): #> not supported between str and int
+     #   print("That coordinate is not on the grid.")
+#else:
+#    print("Provided value is not an integer")
     # continue not properly in loop
 
 #   try:
@@ -122,12 +135,12 @@ else:
 
 # return True
 
-if user_guess_row == computer_ship_row and user_guess_column == computer_ship_col:
-    print("Congratulations you hit my battleship :D")
-else:
-    print("Aww, you missed my battleship! :(")
-    USER_BOARD[int(user_guess_row)][int(user_guess_column)] = "X"
-    print_user_board(USER_BOARD)
+#if user_guess_row == computer_ship_row and user_guess_column == computer_ship_col:
+ #   print("Congratulations you hit my battleship :D")
+#else:
+ #   print("Aww, you missed my battleship! :(")
+   # USER_BOARD[int(user_guess_row)][int(user_guess_column)] = "X"
+  #  print_user_board(USER_BOARD)
 
 
 # similar to switch case... get user results...
