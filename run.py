@@ -22,13 +22,23 @@ COMPUTERS_BOARD = []
 for row in range(0, 6):
     USER_BOARD.append(["O"] * 6)
 
-
-def print_game_board(USER_BOARD):
+def print_user_board(USER_BOARD):
     for row in USER_BOARD:
         print(row)
 
 
-print_game_board(USER_BOARD)
+print_user_board(USER_BOARD)
+
+
+# computer hidden game board
+for row in range(0, 6):
+    COMPUTERS_BOARD.append(["*"] * 6)
+
+def print_computer_board(COMPUTERS_BOARD):
+    for row in COMPUTERS_BOARD:
+        print(row)
+
+print_computer_board(COMPUTERS_BOARD)
 
 
 # function to randomly generate computers guess
@@ -101,7 +111,7 @@ if user_guess_row == computer_ship_row and user_guess_column == computer_ship_co
 else:
     print("Aww, you missed my battleship! :(")
     USER_BOARD[int(user_guess_row)][int(user_guess_column)] = "X"
-    print_game_board(USER_BOARD)
+    print_user_board(USER_BOARD)
 
 
 # similar to switch case... get user results...
