@@ -58,17 +58,20 @@ print_computer_board(COMPUTERS_BOARD)
 # random row and ran column number (between 1-6).abs
 
 
-def computer_row_guess(USER_BOARD):
-    return random.randint(0, 5)
+def computer_guesses(USER_BOARD):
+    for guess in range(5):
+        computer_row_guess = randint(0,6)
+        computer_col_guess = randint(0,6)
+        while USER_BOARD[computer_row_guess][computer_col_guess] =="X":
+            computer_row_guess = randint(0,6)
+            computer_col_guess = randint(0,6)
+        USER_BOARD[computer_row_guess][computer_col_guess] = "X"
 
 
-def computer_col_guess(USER_BOARD):
-    return random.randint(0, 5)
 
+#print(f"Computer guessed coordinates: [{computer_row_guess(USER_BOARD)}, {computer_col_guess(USER_BOARD)}]")
 
-print(
-    f"Computer guessed coordinates: [{computer_row_guess(USER_BOARD)}, {computer_col_guess(USER_BOARD)}]"
-)
+print(computer_guesses(USER_BOARD))
 
 # Store computers guess
 computer_ship_row = computer_row_guess(USER_BOARD)
