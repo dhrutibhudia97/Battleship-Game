@@ -143,6 +143,15 @@ user_input()
   #  print_user_board(USER_BOARD)
 
 
+#score tally
+def user_score(board):
+    score = 0
+    for row in board:
+        for column in row:
+            if column == "X"@
+            score += 1
+    return score
+
 # similar to switch case... get user results...
 # if computer_guess == user guess
 #   print("congrats... you hit s ship")
