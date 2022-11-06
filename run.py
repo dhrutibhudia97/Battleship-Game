@@ -30,25 +30,25 @@ def print_game_board(game_board):
     row_num = 0
     for row in range(0, 6):
         USER_BOARD.append([" "] * 6)
-    for row in USER_BOARD:
+    for row in game_board:
         print("%d |%s|" % (row_num, "|".join(row)))
         row_num += 1
 
 print_game_board(USER_BOARD)
-
 print("\n")
 
 
-# computer hidden game board
-for row in range(0, 6):
-    COMPUTERS_BOARD.append(["*"] * 6)
 
-def print_computer_board(COMPUTERS_BOARD):
+
+def print_computer_board(game_board):
     print('COMPUTER BOARD: ')
     print('   0 1 2 3 4 5')
     print('---------------')
     row_num = 0
-    for row in COMPUTERS_BOARD:
+    # computer hidden game board
+    for row in range(0, 6):
+        COMPUTERS_BOARD.append(["*"] * 6)
+    for row in game_board:
         print("%d |%s|" % (row_num, "|".join(row)))
         row_num += 1
 
@@ -59,14 +59,14 @@ print_computer_board(COMPUTERS_BOARD)
 # random row and ran column number (between 1-6).abs
 
 #get computer random generated ship location
-def computers_ships(COMPUTERS_BOARD):
+def computers_ships(game_board):
     for ship in range(5):
         computer_row = randint(0,6)
         computer_col = randint(0,6)
-        while COMPUTERS_BOARD[computer_row][computer_col] == "X":
+        while game_board[computer_row][computer_col] == "X":
             computer_row = randint(0,6)
             computer_col = randint(0,6)
-        COMPUTERS_BOARD[computer_row][computer_col] = "X"
+        game_board[computer_row][computer_col] = "X"
 
 
 # 
