@@ -17,6 +17,7 @@ COMPUTERS_BOARD = []
 
 # function to see the board
 def game_board():
+    pass
 
 # need to fix grid layout so comma,quotes and
 # inner square brackets
@@ -95,6 +96,7 @@ print("\nCoordinates should be 2 numbers (between 0 - 5) seperated by a comma.")
 print("Example:[3, 5] \n")
 
 # user_guess = (f"[{input('Enter your row here: ')} , {input('Enter your column here: ')}]")
+# asks users what row and column to guess battleship is in
 def user_input():
     user_guess_row = input("Enter your row here: ")
     user_guess_column = input("Enter your column here: ")
@@ -156,6 +158,8 @@ def user_score(COMPUTERS_BOARD):
     return score
 
 # turns left to guess on computers hidden board
+def computers_ships():
+    
 computers_ships(COMPUTERS_BOARD)
 turns_left = 20
 print(COMPUTERS_BOARD)
