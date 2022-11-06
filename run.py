@@ -99,6 +99,8 @@ def user_input():
     user_guess_column = input("Enter your column here: ")
     print(f"[{user_guess_row} , {user_guess_column}]")
     return int(user_guess_row), int(user_guess_column)
+    #NEED TO ADD VALIDITY CHECK TO UNPUT LATER... INTEGER OF CORRECT RANGE
+    # THATS not been repeated before ALSO not a blank!
 
     #if (
        # user_guess_row.isdigit() and user_guess_column.isdigit()):  
