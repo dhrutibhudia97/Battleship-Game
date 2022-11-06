@@ -15,6 +15,9 @@ USER_BOARD = []
 # hidden computer board
 COMPUTERS_BOARD = []
 
+# function to see the board
+def game_board():
+
 # need to fix grid layout so comma,quotes and
 # inner square brackets
 # are removed.
