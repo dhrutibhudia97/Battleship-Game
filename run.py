@@ -6,8 +6,10 @@ from random import randint
 
 print("This is a game of Battleships")
 
+#insert name to personalise user board name
 insert_name = input("Enter your name here: \n")
 print(f"Hi {insert_name}, get ready to play BattleShips!")
+print('\n')
 
 # user board set up
 USER_BOARD = []
@@ -15,29 +17,24 @@ USER_BOARD = []
 # hidden computer board
 COMPUTERS_BOARD = []
 
-# function to see the board
-def game_board():
-    pass
-
 # need to fix grid layout so comma,quotes and
-# inner square brackets
-# are removed.
+# inner square brackets are removed.
 # .replace and . split are not working!
-for row in range(0, 6):
-    USER_BOARD.append([" "] * 6)
-    
-print('\n')
 
-def print_user_board(USER_BOARD):
-    print(f"{insert_name}'s BOARD: ")
+
+# function to see the board
+def print_game_board(game_board):
+    print(f"{insert_name}'s BOARD:")
     print('   0 1 2 3 4 5')
     print('---------------')
     row_num = 0
+    for row in range(0, 6):
+        USER_BOARD.append([" "] * 6)
     for row in USER_BOARD:
         print("%d |%s|" % (row_num, "|".join(row)))
         row_num += 1
 
-print_user_board(USER_BOARD)
+print_game_board(USER_BOARD)
 
 print("\n")
 
@@ -145,7 +142,7 @@ user_input()
 #else:
  #   print("Aww, you missed my battleship! :(")
    # USER_BOARD[int(user_guess_row)][int(user_guess_column)] = "X"
-  #  print_user_board(USER_BOARD)
+  #  print_game_board(USER_BOARD)
 
 
 #score tally
@@ -158,10 +155,10 @@ def user_score(COMPUTERS_BOARD):
     return score
 
 # turns left to guess on computers hidden board
-def computers_ships():
-    
+
 computers_ships(COMPUTERS_BOARD)
-turns_left = 20
+turns_left = 15
+#while turns_left > 0:
 print(COMPUTERS_BOARD)
 print(USER_BOARD)
 
