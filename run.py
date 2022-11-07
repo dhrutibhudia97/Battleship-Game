@@ -12,11 +12,12 @@ print(f"Hi {insert_name}, get ready to play BattleShips!")
 print('\n')
 
 # user board set up
-USER_BOARD = []
+USER_BOARD = [["x"] * 6 for row in range(6)]
+print(USER_BOARD)
 
 # hidden computer board
-COMPUTERS_BOARD = []
-
+COMPUTERS_BOARD = [["o"] * 6 for row in range(6)]
+print(COMPUTERS_BOARD)
 # need to fix grid layout so comma,quotes and
 # inner square brackets are removed.
 # .replace and . split are not working!
@@ -28,8 +29,6 @@ def print_game_board(game_board):
     print('   0 1 2 3 4 5')
     print('---------------')
     row_num = 0
-    for row in range(0, 6):
-        USER_BOARD.append([" "] * 6)
     for row in game_board:
         print("%d |%s|" % (row_num, "|".join(row)))
         row_num += 1
@@ -38,16 +37,12 @@ print_game_board(USER_BOARD)
 print("\n")
 
 
-
-
 def print_computer_board(game_board):
     print('COMPUTER BOARD: ')
     print('   0 1 2 3 4 5')
     print('---------------')
     row_num = 0
     # computer hidden game board
-    for row in range(0, 6):
-        COMPUTERS_BOARD.append(["*"] * 6)
     for row in game_board:
         print("%d |%s|" % (row_num, "|".join(row)))
         row_num += 1
@@ -60,7 +55,7 @@ print_computer_board(COMPUTERS_BOARD)
 
 #get computer random generated ship location
 def computers_ships(game_board):
-    for ship in range(5):
+    for computer in range(5):
         computer_row = randint(0,6)
         computer_col = randint(0,6)
         while game_board[computer_row][computer_col] == "X":
@@ -155,7 +150,12 @@ def user_score(game_board):
             if column == "X":
                 score += 1
     return score
-    return score
+    #if score == 5:
+     #   print(YOU HAVE DEFEATED ALL MY BATTLESHIPS! CONGRATS!)
+     #   break
+      #  else:
+       #     continue
+
 
 # turns left to guess on computers hidden board
 
