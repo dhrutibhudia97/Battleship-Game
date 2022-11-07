@@ -13,11 +13,11 @@ print('\n')
 
 # user board set up
 USER_BOARD = [["x"] * 6 for row in range(6)]
-print(USER_BOARD)
+
 
 # hidden computer board
 COMPUTERS_BOARD = [["o"] * 6 for row in range(6)]
-print(COMPUTERS_BOARD)
+
 # need to fix grid layout so comma,quotes and
 # inner square brackets are removed.
 # .replace and . split are not working!
@@ -91,7 +91,13 @@ print("Example:[3, 5] \n")
 # asks users what row and column to guess battleship is in
 def user_input():
     user_guess_row = input("Enter your row here: ")
+    while user_guess_row not in '012345':
+        print("Row coordinate not valid, try again")
+        user_guess_row = input(("Enter your row here: "))
     user_guess_column = input("Enter your column here: ")
+    while user_guess_column not in "012345":
+        print("Column coordinate not valid, try again")
+        user_guess_column = input("Enter your column here: ")
     print(f"[{user_guess_row} , {user_guess_column}]")
     return int(user_guess_row), int(user_guess_column)
     #NEED TO ADD VALIDITY CHECK TO UNPUT LATER... INTEGER OF CORRECT RANGE
