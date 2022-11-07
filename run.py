@@ -148,12 +148,13 @@ user_input()
 
 
 #score tally
-def user_score(COMPUTERS_BOARD):
+def user_score(game_board):
     score = 0
-    for row in COMPUTERS_BOARD:
+    for row in game_board:
         for column in row:
             if column == "X":
                 score += 1
+    return score
     return score
 
 # turns left to guess on computers hidden board
