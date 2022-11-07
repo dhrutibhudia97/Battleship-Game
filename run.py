@@ -56,11 +56,12 @@ print_computer_board(COMPUTERS_BOARD)
 #get computer random generated ship location
 def computers_ships(game_board):
     for computer in range(5):
-        computer_row = randint(0,6)
-        computer_col = randint(0,6)
+        computer_row = randint(0, 6)
+        computer_col = randint(0, 6)
         while game_board[computer_row][computer_col] == "X":
-            computer_row = randint(0,6)
-            computer_col = randint(0,6)
+            #computer_row = randint(0,6)
+            #computer_col = randint(0,6)
+            computer_row, computer_col = user_input()
         game_board[computer_row][computer_col] = "X"
 
 
