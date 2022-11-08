@@ -12,11 +12,11 @@ print(f"Hi {insert_name}, get ready to play BattleShips!")
 print('\n')
 
 # user board set up
-USER_BOARD = [["x"] * 6 for row in range(6)]
+USER_BOARD = [["x"] * 6 for x in range(6)]
 
 
 # hidden computer board
-COMPUTERS_BOARD = [["o"] * 6 for row in range(6)]
+COMPUTERS_BOARD = [["o"] * 6 for y in range(6)]
 
 # need to fix grid layout so comma,quotes and
 # inner square brackets are removed.
@@ -63,7 +63,6 @@ def computers_ships(game_board):
             #computer_col = randint(0,6)
             computer_row, computer_col = user_input()
         game_board[computer_row][computer_col] = "X"
-
 
 # 
 #print_computer_board(COMPUTERS_BOARD)
@@ -213,3 +212,4 @@ while turns_left > 0:
 # else computer guess != user guess
 #     print("YOU MISSED")
 #     user_goes_left -=1
+
