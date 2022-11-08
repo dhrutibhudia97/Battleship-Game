@@ -179,6 +179,10 @@ while turns_left > 0:
         USER_BOARD[user_guess_row][user_guess_column] = "X"
         turns_left -= 1
         user_score += 1
+    else:
+        print("AWW! you missed")
+        USER_BOARD[user_guess_row][user_guess_column] = "-"
+        turns_left -= 1
 
 
 
