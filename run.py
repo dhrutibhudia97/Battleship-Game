@@ -183,6 +183,14 @@ while turns_left > 0:
         print("AWW! you missed")
         USER_BOARD[user_guess_row][user_guess_column] = "-"
         turns_left -= 1
+    if user_score(USER_BOARD) == 5:
+        print("Congrats! you sunk all 5 ships and have won the game!")
+        break
+    print(f"You have {turns_left} turns left")
+    if turns_left == 0:
+        print("No more turns left! GAME OVER")
+        break
+
 
 
 
