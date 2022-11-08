@@ -168,9 +168,14 @@ def user_score(game_board):
 
 computers_ships(COMPUTERS_BOARD)
 turns_left = 15
-#while turns_left > 0:
-print(COMPUTERS_BOARD)
-print(USER_BOARD)
+while turns_left > 0:
+    print("Welcome to the game")
+    print_game_board(USER_BOARD)
+    user_guess_row, user_guess_column = user_input()
+
+
+#print(COMPUTERS_BOARD)
+#print(USER_BOARD)
 
 # similar to switch case... get user results...
 # if computer_guess == user guess
