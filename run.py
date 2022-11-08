@@ -172,6 +172,14 @@ while turns_left > 0:
     print("Welcome to the game")
     print_game_board(USER_BOARD)
     user_guess_row, user_guess_column = user_input()
+    if USER_BOARD[user_guess_row][user_guess_column] == "-":
+        print("You have already guessed this coordinate. Guess again")
+    elif COMPUTERS_BOARD[user_guess_row][user_guess_column] == "X":
+        print("YAY, you hit a ship!")
+        USER_BOARD[user_guess_row][user_guess_column] = "X"
+        turns_left -= 1
+        user_score += 1
+
 
 
 #print(COMPUTERS_BOARD)
