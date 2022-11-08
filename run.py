@@ -55,14 +55,14 @@ print_computer_board(COMPUTERS_BOARD)
 
 #get computer random generated ship location
 def computers_ships(game_board):
-    for computer in range(5):
-        computer_row = randint(0, 6)
-        computer_col = randint(0, 6)
-        while game_board[computer_row][computer_col] == "X":
-            #computer_row = randint(0,6)
-            #computer_col = randint(0,6)
-            computer_row, computer_col = user_input()
-        game_board[computer_row][computer_col] = "X"
+    for target in range(5):
+        target_row, target_col = randint(0, 6), randint(0, 6)
+        #target_col = randint(0, 6)
+        while game_board[target_row][target_col] == "X":
+            #target_row = randint(0,6)
+            #target_col = randint(0,6)
+            target_row, target_col = user_input()
+        game_board[target_row][target_col] = "X"
 
 # 
 #print_computer_board(COMPUTERS_BOARD)
@@ -98,7 +98,7 @@ def user_input():
     while user_guess_column not in "012345":
         print("Column coordinate not valid, try again")
         user_guess_column = input("Enter your column here: ")
-    print(f"[{user_guess_row} , {user_guess_column}]")
+    #print(f"[{user_guess_row} , {user_guess_column}]")
     return int(user_guess_row), int(user_guess_column)
     #NEED TO ADD VALIDITY CHECK TO UNPUT LATER... INTEGER OF CORRECT RANGE
     # THATS not been repeated before ALSO not a blank!
@@ -116,7 +116,7 @@ def user_input():
        # return int(user_guess_row), int(user_guess_column)
         #print(f"{user_guess_row}, {user_guess_column}")
 
-user_input()
+#user_input()
     # if int(user_guess_row) > 5 and int(user_guess_column) > 5:
     #    print("number is not on the grid")
     # user_guess = int(integer)
@@ -165,7 +165,10 @@ def user_score(game_board):
 
 # turns left to guess on computers hidden board
 
+
 computers_ships(COMPUTERS_BOARD)
+print_game_board(COMPUTERS_BOARD)
+
 turns_left = 15
 while turns_left > 0:
     print("Welcome to the game")
