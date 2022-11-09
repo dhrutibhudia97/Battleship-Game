@@ -57,12 +57,10 @@ print_computer_board(COMPUTERS_BOARD)
 def computers_ships(game_board):
     for target in range(5):
         target_row, target_col = randint(0, 5), randint(0, 5)
-        #target_col = randint(0, 5)
         while game_board[target_row][target_col] == "X":
-            #target_row = randint(0,5)
-            #target_col = randint(0,5)
-            target_row, target_col = user_input()
-        game_board[target_row][target_col] = "X"
+            target_row, target_col = randint(0, 5), randint(0, 5)
+	        # target_row, target_col = user_input()
+        game_board[target_row][target_col] = "X" 
 
 # 
 #print_computer_board(COMPUTERS_BOARD)
@@ -90,14 +88,14 @@ print("Example:[3, 5] \n")
 # user_guess = (f"[{input('Enter your row here: ')} , {input('Enter your column here: ')}]")
 # asks users what row and column to guess battleship is in
 def user_input():
-    user_guess_row = input("Enter your row here: ")
-    while user_guess_row not in '012345':
-        print("Row coordinate not valid, try again")
-        user_guess_row = input(("Enter your row here: "))
-    user_guess_column = input("Enter your column here: ")
+    user_guess_column = input("Enter your row here: ")
     while user_guess_column not in "012345":
         print("Column coordinate not valid, try again")
-        user_guess_column = input("Enter your column here: ")
+        user_guess_column = input("Enter your row here: ")
+    user_guess_row = input("Enter your column here: ")
+    while user_guess_row not in '012345':
+        print("Row coordinate not valid, try again")
+        user_guess_row = input(("Enter your column here: "))
     #print(f"[{user_guess_row} , {user_guess_column}]")
     return int(user_guess_row), int(user_guess_column)
     #NEED TO ADD VALIDITY CHECK TO UNPUT LATER... INTEGER OF CORRECT RANGE
@@ -180,7 +178,7 @@ while turns_left > 0:
         print("YAY, you hit a ship!")
         USER_BOARD[user_guess_row][user_guess_column] = "X"
         turns_left -= 1
-        user_score += 1
+        #user_score += 1
     else:
         print("AWW! you missed")
         USER_BOARD[user_guess_row][user_guess_column] = "-"
