@@ -12,11 +12,11 @@ print(f"Hi {insert_name}, get ready to play BattleShips!")
 print('\n')
 
 # user board set up
-USER_BOARD = [["x"] * 6 for x in range(6)]
+USER_BOARD = [["o"] * 6 for x in range(6)]
 
 
 # hidden computer board
-COMPUTERS_BOARD = [["o"] * 6 for y in range(6)]
+COMPUTERS_BOARD = [["x"] * 6 for y in range(6)]
 
 # need to fix grid layout so comma,quotes and
 # inner square brackets are removed.
@@ -147,13 +147,13 @@ def user_input():
 
 
 #score tally
-def user_score(game_board):
-    score = 0
-    for row in game_board:
-        for column in row:
-            if column == "X":
-                score += 1
-    return score
+#def user_score(game_board):
+ #   score = 0
+  #  for row in game_board:
+   #     for column in row:
+    #        if column == "X":
+     #           score += 1
+   # return score
     #if score == 5:
      #   print(YOU HAVE DEFEATED ALL MY BATTLESHIPS! CONGRATS!)
      #   break
@@ -163,12 +163,11 @@ def user_score(game_board):
 
 # turns left to guess on computers hidden board
 
-
 computers_ships(COMPUTERS_BOARD)
 print_game_board(COMPUTERS_BOARD)
-
+user_score = 0
 turns_left = 15
-while turns_left > 0:
+while turns_left > 0 or user_score < 5:
     print("Welcome to the game")
     print_game_board(USER_BOARD)
     user_guess_row, user_guess_column = user_input()
@@ -178,14 +177,15 @@ while turns_left > 0:
         print("YAY, you hit a ship!")
         USER_BOARD[user_guess_row][user_guess_column] = "X"
         turns_left -= 1
-        #user_score += 1
+        user_score += 1
     else:
         print("AWW! you missed")
         USER_BOARD[user_guess_row][user_guess_column] = "-"
         turns_left -= 1
-    if user_score(USER_BOARD) == 5:
+    if user_score == 5:
         print("Congrats! you sunk all 5 ships and have won the game!")
         break
+    print(f"User Score: {user_score}")
     print(f"You have {turns_left} turns left")
     if turns_left == 0:
         print("No more turns left! GAME OVER")
