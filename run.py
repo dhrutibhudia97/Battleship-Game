@@ -6,7 +6,7 @@ from random import randint
 
 print("This is a game of Battleships")
 
-#insert name to personalise user board name
+# insert name to personalise user board name
 insert_name = input("Enter your name here: \n")
 print(f"Hi {insert_name}, get ready to play BattleShips!")
 print('\n')
@@ -33,6 +33,7 @@ def print_game_board(game_board):
         print("%d |%s|" % (row_num, "|".join(row)))
         row_num += 1
 
+
 print_game_board(USER_BOARD)
 print("\n")
 
@@ -46,6 +47,7 @@ def print_computer_board(game_board):
     for row in game_board:
         print("%d |%s|" % (row_num, "|".join(row)))
         row_num += 1
+
 
 print_computer_board(COMPUTERS_BOARD)
 
@@ -62,7 +64,7 @@ def computers_ships(game_board):
 	        # target_row, target_col = user_input()
         game_board[target_row][target_col] = "X" 
 
-# 
+#
 #print_computer_board(COMPUTERS_BOARD)
 #print(f"Computer guessed coordinates: [{computer_row_guess(USER_BOARD)}, {computer_col_guess(USER_BOARD)}]")
 
@@ -96,13 +98,13 @@ def user_input():
     while user_guess_row not in '012345':
         print("Row coordinate not valid, try again")
         user_guess_row = input(("Enter your column here: "))
-    #print(f"[{user_guess_row} , {user_guess_column}]")
+    print(f"Your coordinate: [{user_guess_row} , {user_guess_column}]")
     return int(user_guess_row), int(user_guess_column)
     #NEED TO ADD VALIDITY CHECK TO UNPUT LATER... INTEGER OF CORRECT RANGE
     # THATS not been repeated before ALSO not a blank!
 
     #if (
-       # user_guess_row.isdigit() and user_guess_column.isdigit()):  
+    # user_guess_row.isdigit() and user_guess_column.isdigit()):  
         # tried adding and in range(5)... didn't work
      #   print("Provided value is an integer")
       #  while user_guess_row > 6:
@@ -170,17 +172,17 @@ turns_left = 15
 while turns_left > 0 or user_score < 5:
     print("Welcome to the game")
     print_game_board(USER_BOARD)
-    user_guess_row, user_guess_column = user_input()
-    if USER_BOARD[user_guess_row][user_guess_column] == "-":
+    user_guess_column, user_guess_row = user_input()
+    if USER_BOARD[user_guess_column][user_guess_row] == "-":
         print("You have already guessed this coordinate. Guess again")
-    elif COMPUTERS_BOARD[user_guess_row][user_guess_column] == "X":
+    elif COMPUTERS_BOARD[user_guess_column][user_guess_row] == "X":
         print("YAY, you hit a ship!")
-        USER_BOARD[user_guess_row][user_guess_column] = "X"
+        USER_BOARD[user_guess_column][user_guess_row] = "X"
         turns_left -= 1
         user_score += 1
     else:
         print("AWW! you missed")
-        USER_BOARD[user_guess_row][user_guess_column] = "-"
+        USER_BOARD[user_guess_column][user_guess_row] = "-"
         turns_left -= 1
     if user_score == 5:
         print("Congrats! you sunk all 5 ships and have won the game!")
@@ -213,4 +215,3 @@ while turns_left > 0 or user_score < 5:
 # else computer guess != user guess
 #     print("YOU MISSED")
 #     user_goes_left -=1
-
