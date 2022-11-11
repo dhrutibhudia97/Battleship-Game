@@ -14,13 +14,9 @@ print('\n')
 # user board set up
 USER_BOARD = [["o"] * 6 for x in range(6)]
 
-
 # hidden computer board
 COMPUTERS_BOARD = [["x"] * 6 for y in range(6)]
-
-# need to fix grid layout so comma,quotes and
-# inner square brackets are removed.
-# .replace and . split are not working!
+# .replace and . split are not working to remove comma so used this method instead
 
 
 # function to see the board
@@ -32,7 +28,6 @@ def print_game_board(game_board):
     for row in game_board:
         print("%d |%s|" % (row_num, "|".join(row)))
         row_num += 1
-
 
 print_game_board(USER_BOARD)
 print("\n")
@@ -48,12 +43,8 @@ def print_computer_board(game_board):
         print("%d |%s|" % (row_num, "|".join(row)))
         row_num += 1
 
-
 print_computer_board(COMPUTERS_BOARD)
 
-
-# function to randomly generate computers guess
-# random row and ran column number (between 1-6).abs
 
 #get computer random generated ship location
 def computers_ships(game_board):
@@ -64,21 +55,8 @@ def computers_ships(game_board):
 	        # target_row, target_col = user_input()
         game_board[target_row][target_col] = "X" 
 
-#
-#print_computer_board(COMPUTERS_BOARD)
-#print(f"Computer guessed coordinates: [{computer_row_guess(USER_BOARD)}, {computer_col_guess(USER_BOARD)}]")
 
-#print(computer_guesses(USER_BOARD))
-
-# Store computers guess
-#computer_ship_row = computer_row_guess(USER_BOARD)
-#computer_ship_col = computer_col_guess(USER_BOARD)
-
-# win - function first to hit all 5
-# count-down function - user has 20 goes at guessing (20/36 to find 5...)
-
-# User inputs there guess
-# row and column number (between 1-6)
+# NEED TO ADD THESE AS VALIDITY CHECKERS
 # users guess is stored so they can't guess same numbers again
 # invalid user input/error options if (1)Not an integer
 # elif (2) Integer not in range. else(3)Guessed that integer combo already
@@ -91,8 +69,8 @@ print("Example:[3, 5] \n")
 # asks users what row and column to guess battleship is in
 def user_input():
     user_guess_column = input("Enter your row here: ")
-    while user_guess_column not in "012345":
-        print("Column coordinate not valid, try again")
+    while user_guess_column not in '012345':
+        print("Column coordinate not an integer. Input a number between 0-5")
         user_guess_column = input("Enter your row here: ")
     user_guess_row = input("Enter your column here: ")
     while user_guess_row not in '012345':
