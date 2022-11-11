@@ -90,7 +90,7 @@ while turns_left > 0 or user_score < 5:
     if USER_BOARD[user_guess_column][user_guess_row] in (
         BoardStates.SHIP_HIT, BoardStates.WRONG_GUESS):
         print("You have already guessed this coordinate. Guess again")
-    elif (COMPUTERS_BOARD[user_guess_column][user_guess_row] == BoardStates.SHIP_ALIVE.value):
+    elif (USER_BOARD[user_guess_column][user_guess_row] == BoardStates.SHIP_ALIVE.value):
         print("YAY, you hit a ship!")
         USER_BOARD[user_guess_column][user_guess_row] = BoardStates.SHIP_HIT.value
         turns_left -= 1
