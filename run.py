@@ -66,7 +66,7 @@ def computers_ships(game_board):
 # asks users what row and column to guess battleship is in
 def user_input():
     print("\nCoordinates should be a number between 0 - 5.")
-    print("Example:[3, 5] \n")
+    #print("Example:[3, 5] \n")
     user_guess_column = input("Enter your row here: ")
     while user_guess_column not in '012345':
         print("Column coordinate not an integer. Input a number between 0-5")
@@ -75,7 +75,7 @@ def user_input():
     while user_guess_row not in '012345':
         print("Row coordinate not valid, try again")
         user_guess_row = input(("Enter your column here: "))
-    print(f"Your coordinate: [{user_guess_row} , {user_guess_column}]")
+    print(f"Your coordinate: [{user_guess_column} , {user_guess_row}]")
     #print(f"Your coordinate: [{user_guess_column} , {user_guess_row}]")
     return int(user_guess_row), int(user_guess_column)
 
