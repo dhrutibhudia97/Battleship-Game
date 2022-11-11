@@ -12,9 +12,9 @@ BOARD_GRID_SIZE = 6
 NO_OF_SHIPS = 5
 
 # user board set up
-USER_BOARD = [["o"] * 6 for x in range(6)]
+USER_BOARD = [["o"] * BOARD_GRID_SIZE for x in range(BOARD_GRID_SIZE)]
 # hidden computer board
-COMPUTERS_BOARD = [["x"] * 6 for y in range(6)]
+COMPUTERS_BOARD = [["x"] * BOARD_GRID_SIZE for y in range(BOARD_GRID_SIZE)]
 # .replace and . split are not working to remove comma so used this method instead
 # function to see the board
 def print_game_board(game_board):
@@ -40,11 +40,11 @@ print_computer_board(COMPUTERS_BOARD)
 #get computer random generated ship location
 def computers_ships(game_board):
     for target in range(5):
-        target_row = randint(0, 5)
-        target_col = randint(0, 5)
+        target_row = randint(0, BOARD_GRID_SIZE - 1)
+        target_col = randint(0, BOARD_GRID_SIZE - 1)
         while game_board[target_row][target_col] == "X":
-            target_row = randint(0, 5)
-            target_col = randint(0, 5)
+            target_row = randint(0, BOARD_GRID_SIZE - 1)
+            target_col = randint(0, BOARD_GRID_SIZE - 1)
 	        # target_row, target_col = user_input()
         game_board[target_row][target_col] = "X" 
 # NEED TO ADD THESE AS VALIDITY CHECKERS
