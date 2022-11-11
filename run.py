@@ -13,6 +13,10 @@ BOARD_GRID_SIZE = 6
 NO_OF_SHIPS = 5
 
 class BoardStates(enum.Enum):
+    EMPTY = "o"
+    SHIP_HIT = "x"
+    SHIP_ALIVE = "X"
+    WRONG_GUESS = "-"
 
 # user board set up
 USER_BOARD = [["o"] * BOARD_GRID_SIZE for x in range(BOARD_GRID_SIZE)]
