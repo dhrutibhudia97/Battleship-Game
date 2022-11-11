@@ -87,31 +87,40 @@ def user_input():
 # game function, only runs if there are user turns left and ships left to hit.
 #computers_ships(COMPUTERS_BOARD)
 #print_game_board(COMPUTERS_BOARD)
-user_score = 0
-turns_left = 15
-while turns_left > 0 or user_score < 5:
-    print("Welcome to the game")
-    print_game_board(USER_BOARD)
-    user_guess_column, user_guess_row = user_input()
-    if USER_BOARD[user_guess_column][user_guess_row] in (
-        BoardStates.SHIP_HIT, BoardStates.WRONG_GUESS):
-        print("You have already guessed this coordinate. Guess again")
-    elif (USER_BOARD[user_guess_column][user_guess_row] == BoardStates.SHIP_ALIVE.value):
-        print("YAY, you hit a ship!")
-        USER_BOARD[user_guess_column][user_guess_row] = BoardStates.SHIP_HIT.value
-        turns_left -= 1
-        user_score += 1
-    else:
-        print("AWW! you missed")
-        USER_BOARD[user_guess_column][user_guess_row] = BoardStates.WRONG_GUESS.value
-        turns_left -= 1
-    if user_score == 5:
-        print("Congrats! you sunk all 5 ships and have won the game!")
+def start_game():
+    user_score = 0
+    turns_left = 15
+
+    computers_ships(USER_BOARD)
+    while turns_left > 0 or user_score < 5:
+        print("Welcome to the game")
         print_game_board(USER_BOARD)
-        break
-    print(f"User Score: {user_score}")
-    print(f"You have {turns_left} turns left")
-    if turns_left == 0:
-        print("No more turns left! GAME OVER")
-        print_game_board(USER_BOARD)
-        break
+        user_guess_column, user_guess_row = user_input()
+        print('\n')
+        print(USER_BOARD[user_guess_column][user_guess_row])
+        if USER_BOARD[user_guess_column][user_guess_row] in (
+            BoardStates.SHIP_HIT, BoardStates.WRONG_GUESS):
+            print("You have already guessed this coordinate. Guess again")
+        elif (USER_BOARD[user_guess_column][user_guess_row] == BoardStates.SHIP_ALIVE.value):
+            print("YAY, you hit a ship!")
+            USER_BOARD[user_guess_column][user_guess_row] = BoardStates.SHIP_HIT.value
+            turns_left -= 1
+            user_score += 1
+        else:
+            print("AWW! you missed")
+            USER_BOARD[user_guess_column][user_guess_row] = BoardStates.WRONG_GUESS.value
+            turns_left -= 1
+        if user_score == 5:
+            print("Congrats! you sunk all 5 ships and have won the game!")
+            print_game_board(USER_BOARD)
+            break
+        print(f"User Score: {user_score}")
+        print(f"You have {turns_left} turns left")
+        if turns_left == 0:
+            print("No more turns left! GAME OVER")
+            print_game_board(USER_BOARD)
+            break
+
+
+if __name__ == "__main__":
+    start_game()
