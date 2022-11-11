@@ -21,7 +21,7 @@ class BoardStates(enum.Enum):
 # user board set up
 USER_BOARD = [[BoardStates.EMPTY.value] * BOARD_GRID_SIZE for x in range(BOARD_GRID_SIZE)]
 # hidden computer board
-COMPUTERS_BOARD = [[" "] * BOARD_GRID_SIZE for y in range(BOARD_GRID_SIZE)]
+#COMPUTERS_BOARD = [[" "] * BOARD_GRID_SIZE for y in range(BOARD_GRID_SIZE)]
 # .replace and . split are not working to remove comma so used this method instead
 # function to see the board
 def print_game_board(game_board):
@@ -30,21 +30,27 @@ def print_game_board(game_board):
     print('---------------')
     row_num = 0
     for row in game_board:
-        row_to_be_printed = "|".join(row).replace(BoardStates.SHIP_ALIVE.value, BoardStates.EMPTY.value)
-        print("%d |%s|" % (row_num, "|".join(row)))
+        row_to_be_printed = "|".join(row).replace(
+            BoardStates.SHIP_ALIVE.value, BoardStates.EMPTY.value
+        )
+        #print("%d |%s|" % (row_num, "|".join(row)))
+        print("%d |%s|" % (row_num, row_to_be_printed))
         row_num += 1
 print_game_board(USER_BOARD)
 print("\n")
-def print_computer_board(game_board):
-    print('COMPUTER BOARD: ')
-    print('   0 1 2 3 4 5')
-    print('---------------')
-    row_num = 0
+
+#def print_computer_board(game_board):
+ #   print('COMPUTER BOARD: ')
+  #  print('   0 1 2 3 4 5')
+   # print('---------------')
+    #row_num = 0
     # computer hidden game board
-    for row in game_board:
-        print("%d |%s|" % (row_num, "|".join(row)))
-        row_num += 1
-print_computer_board(COMPUTERS_BOARD)
+    #for row in game_board:
+     #   print("%d |%s|" % (row_num, "|".join(row)))
+      #  row_num += 1
+#print_computer_board(COMPUTERS_BOARD)
+
+
 #get computer random generated ship location
 def computers_ships(game_board):
     for target in range(NO_OF_SHIPS):
