@@ -62,10 +62,11 @@ def computers_ships(game_board):
 # invalid user input/error options if (1)Not an integer (is.digit...?)
 # elif (2) Integer not in range. else(3)Guessed that integer combo already
 # print user prompt message
-print("\nCoordinates should be 2 numbers (between 0 - 5) seperated by a comma.")
-print("Example:[3, 5] \n")
+
 # asks users what row and column to guess battleship is in
 def user_input():
+    print("\nCoordinates should be a number between 0 - 5.")
+    print("Example:[3, 5] \n")
     user_guess_column = input("Enter your row here: ")
     while user_guess_column not in '012345':
         print("Column coordinate not an integer. Input a number between 0-5")
