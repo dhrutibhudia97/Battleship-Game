@@ -79,7 +79,7 @@ def user_input():
     while user_guess_row not in '012345':
         print("Row coordinate not valid, try again")
         user_guess_row = input(("Enter your column here: "))
-    print(f"Your coordinate: [{user_guess_row} , {user_guess_column}]")
+    print(f"Your coordinate: [{user_guess_column} , {user_guess_row}]")
     return int(user_guess_row), int(user_guess_column)
 
 
