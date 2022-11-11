@@ -85,8 +85,8 @@ def user_input():
 
 
 # game function, only runs if there are user turns left and ships left to hit.
-computers_ships(COMPUTERS_BOARD)
-print_game_board(COMPUTERS_BOARD)
+#computers_ships(COMPUTERS_BOARD)
+#print_game_board(COMPUTERS_BOARD)
 user_score = 0
 turns_left = 15
 while turns_left > 0 or user_score < 5:
