@@ -20,17 +20,24 @@ USER_BOARD = [[BoardStates.EMPTY.value] * BOARD_GRID_SIZE for x in range(BOARD_G
 # .replace and . split are not working to remove comma so used this method instead
 # function to see the board
 def print_game_board(user_name, game_board):
-    print(f"{user_name}'s BOARD:")
+    print(f"{user_name}'s BOARD:\n")
+    print('     column   ')
     print('   0 1 2 3 4 5')
     print('---------------')
     row_num = 0
+    
     for row in game_board:
-        row_to_be_printed = "|".join(row).replace(
-            BoardStates.SHIP_ALIVE.value, BoardStates.EMPTY.value
+        #str = " row  "
+        #for i in str:
+            row_to_be_printed = "|".join(row).replace(
+                BoardStates.SHIP_ALIVE.value, BoardStates.EMPTY.value
         )
-        #print("%d |%s|" % (row_num, "|".join(row)))
-        print("%d |%s|" % (row_num, row_to_be_printed))
-        row_num += 1
+            #print("%s |%d |%s|" % (i, row_num, row_to_be_printed))
+            print("%d |%s|" % (row_num, row_to_be_printed))
+            row_num += 1
+            #if row_num = (BOARD_GRID_SIZE - 1):
+            #    break
+            
 #print_game_board(USER_BOARD)
 #print("\n")
 
@@ -67,15 +74,15 @@ def computers_ships(game_board):
 def user_input():
     print("\nCoordinates should be a number between 0 - 5.")
     #print("Example:[3, 5] \n")
-    user_guess_column = input("Enter your row here: ")
-    while user_guess_column not in '012345':
-        print("Column coordinate not an integer. Input a number between 0-5")
-        user_guess_column = input("Enter your row here: ")
-    user_guess_row = input("Enter your column here: ")
+    user_guess_row = input("Enter your row here: ")
     while user_guess_row not in '012345':
+        print("Column coordinate not an integer. Input a number between 0-5")
+        user_guess_row = input("Enter your row here: ")
+    user_guess_column = input("Enter your column here: ")
+    while user_guess_column not in '012345':
         print("Row coordinate not valid, try again")
-        user_guess_row = input(("Enter your column here: "))
-    print(f"Your coordinate: [{user_guess_column} , {user_guess_row}]")
+        user_guess_column = input(("Enter your column here: "))
+    print(f"Your coordinate: [{user_guess_row} , {user_guess_column}]")
     #print(f"Your coordinate: [{user_guess_column} , {user_guess_row}]")
     return int(user_guess_row), int(user_guess_column)
 
@@ -96,20 +103,20 @@ def start_game():
     while turns_left > 0 or user_score < 5:
         print("Welcome to the game")
         print_game_board(user_name, USER_BOARD)
-        user_guess_column, user_guess_row = user_input()
+        user_guess_row, user_guess_column = user_input()
         print('\n')
-        print(USER_BOARD[user_guess_column][user_guess_row])
-        if USER_BOARD[user_guess_column][user_guess_row] in (
+        print(USER_BOARD[user_guess_row][user_guess_column])
+        if USER_BOARD[user_guess_row][user_guess_column] in (
             BoardStates.SHIP_HIT, BoardStates.WRONG_GUESS):
             print("You have already guessed this coordinate. Guess again")
-        elif (USER_BOARD[user_guess_column][user_guess_row] == BoardStates.SHIP_ALIVE.value):
+        elif (USER_BOARD[user_guess_row][user_guess_column] == BoardStates.SHIP_ALIVE.value):
             print("YAY, you hit a ship!")
-            USER_BOARD[user_guess_column][user_guess_row] = BoardStates.SHIP_HIT.value
+            USER_BOARD[user_guess_row][user_guess_column] = BoardStates.SHIP_HIT.value
             turns_left -= 1
             user_score += 1
         else:
             print("AWW! you missed")
-            USER_BOARD[user_guess_column][user_guess_row] = BoardStates.WRONG_GUESS.value
+            USER_BOARD[user_guess_row][user_guess_column] = BoardStates.WRONG_GUESS.value
             turns_left -= 1
         if user_score == 5:
             print("Congrats! you sunk all 5 ships and have won the game!")
