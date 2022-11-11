@@ -19,9 +19,9 @@ class BoardStates(enum.Enum):
     WRONG_GUESS = "-"
 
 # user board set up
-USER_BOARD = [["o"] * BOARD_GRID_SIZE for x in range(BOARD_GRID_SIZE)]
+USER_BOARD = [[BoardStates.EMPTY.value] * BOARD_GRID_SIZE for x in range(BOARD_GRID_SIZE)]
 # hidden computer board
-COMPUTERS_BOARD = [["x"] * BOARD_GRID_SIZE for y in range(BOARD_GRID_SIZE)]
+COMPUTERS_BOARD = [[" "] * BOARD_GRID_SIZE for y in range(BOARD_GRID_SIZE)]
 # .replace and . split are not working to remove comma so used this method instead
 # function to see the board
 def print_game_board(game_board):
@@ -30,6 +30,7 @@ def print_game_board(game_board):
     print('---------------')
     row_num = 0
     for row in game_board:
+        row_to_be_printed = "|".join(row).replace(BoardStates.SHIP_ALIVE.value, BoardStates.EMPTY.value)
         print("%d |%s|" % (row_num, "|".join(row)))
         row_num += 1
 print_game_board(USER_BOARD)
@@ -49,11 +50,11 @@ def computers_ships(game_board):
     for target in range(NO_OF_SHIPS):
         target_row = randint(0, BOARD_GRID_SIZE - 1)
         target_col = randint(0, BOARD_GRID_SIZE - 1)
-        while game_board[target_row][target_col] == "X":
+        while game_board[target_row][target_col] == BoardStates.SHIP_ALIVE.value:
             target_row = randint(0, BOARD_GRID_SIZE - 1)
             target_col = randint(0, BOARD_GRID_SIZE - 1)
 	        # target_row, target_col = user_input()
-        game_board[target_row][target_col] = "X" 
+        game_board[target_row][target_col] = BoardStates.SHIP_ALIVE.value 
 # NEED TO ADD THESE AS VALIDITY CHECKERS
 # user needs to input data
 # users guess is stored so they can't guess same numbers again
@@ -86,16 +87,17 @@ while turns_left > 0 or user_score < 5:
     print("Welcome to the game")
     print_game_board(USER_BOARD)
     user_guess_column, user_guess_row = user_input()
-    if USER_BOARD[user_guess_column][user_guess_row] == "-":
+    if USER_BOARD[user_guess_column][user_guess_row] in (
+        BoardStates.SHIP_HIT, BoardStates.WRONG_GUESS):
         print("You have already guessed this coordinate. Guess again")
-    elif COMPUTERS_BOARD[user_guess_column][user_guess_row] == "X":
+    elif (COMPUTERS_BOARD[user_guess_column][user_guess_row] == BoardStates.SHIP_ALIVE.value):
         print("YAY, you hit a ship!")
-        USER_BOARD[user_guess_column][user_guess_row] = "X"
+        USER_BOARD[user_guess_column][user_guess_row] = BoardStates.SHIP_HIT.value
         turns_left -= 1
         user_score += 1
     else:
         print("AWW! you missed")
-        USER_BOARD[user_guess_column][user_guess_row] = "-"
+        USER_BOARD[user_guess_column][user_guess_row] = BoardStates.WRONG_GUESS.value
         turns_left -= 1
     if user_score == 5:
         print("Congrats! you sunk all 5 ships and have won the game!")
