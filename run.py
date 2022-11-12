@@ -87,7 +87,7 @@ def user_input():
         if user_guess_row < 0:
             print("Your row number CANNOT BE A NEGATIVE NUMBER!")
             continue
-        elif user_guess_row > BOARD_GRID_SIZE:
+        elif user_guess_row > (BOARD_GRID_SIZE -1):
             print("Your row number CANNOT BE BIGGER THAN THE GRID SIZE!")
             continue
         #elif user_guess_row is None:
@@ -106,7 +106,7 @@ def user_input():
         if user_guess_column < 0:
             print("Your column number CANNOT BE A NEGATIVE NUMBER!")
             continue
-        elif user_guess_column > BOARD_GRID_SIZE:
+        elif user_guess_column > (BOARD_GRID_SIZE -1):
             print("Your column number CANNOT BE BIGGER THAN THE GRID SIZE!")
             continue
         elif user_guess_column is None:
