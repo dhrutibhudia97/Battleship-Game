@@ -139,17 +139,20 @@ def start_game():
         user_guess_row, user_guess_column = user_input()
         print('\n')
         print(USER_BOARD[user_guess_row][user_guess_column])
-        if USER_BOARD[user_guess_row][user_guess_column] in (
-            BoardStates.SHIP_HIT, BoardStates.WRONG_GUESS):
+        if (USER_BOARD[user_guess_row][user_guess_column] == BoardStates.WRONG_GUESS.value):
             print("You have already guessed this coordinate. Guess again")
+        elif (USER_BOARD[user_guess_row][user_guess_column] == BoardStates.SHIP_HIT.value):
+            print("You have already hit this ship!")
+            turns_left = turns_left
+            user_score = user_score
         elif (USER_BOARD[user_guess_row][user_guess_column] == BoardStates.SHIP_ALIVE.value):
             print("YAY, you hit a ship!")
-            USER_BOARD[user_guess_row][user_guess_column] = BoardStates.SHIP_HIT.value
+            (USER_BOARD[user_guess_row][user_guess_column]) = BoardStates.SHIP_HIT.value
             turns_left -= 1
             user_score += 1
         else:
             print("AWW! you missed")
-            USER_BOARD[user_guess_row][user_guess_column] = BoardStates.WRONG_GUESS.value
+            (USER_BOARD[user_guess_row][user_guess_column]) = BoardStates.WRONG_GUESS.value
             turns_left -= 1
         if user_score == 5:
             print("Congrats! you sunk all 5 ships and have won the game!")
