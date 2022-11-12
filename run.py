@@ -73,7 +73,7 @@ def computers_ships(game_board):
 # asks users what row and column to guess battleship is in
 def user_input():
     print("\nCoordinates should be a number between 0 - 5.")
-    user_guess_row = input("Enter your row here: ")
+    #user_guess_row = input("Enter your row here: ")
     #while user_guess_row not in '012345':
     #    print("Column coordinate not an integer. Input a number between 0-5")
     #    user_guess_row = input("Enter your row here: ")
@@ -85,48 +85,38 @@ def user_input():
             print ("Make sure you enter a row number that is an INTEGER!")
             continue
         if user_guess_row < 0:
-            print("Your row number cannot be a negative number!")
+            print("Your row number CANNOT BE A NEGATIVE NUMBER!")
             continue
-        elif user_guess_row > 5:
-            print("Your row number cannot be bigger than 5!")
+        elif user_guess_row > BOARD_GRID_SIZE:
+            print("Your row number CANNOT BE BIGGER THAN THE GRID SIZE!")
             continue
-        elif user_guess_row is None:
-            print("You have to enter your row number!")
-            continue
+        #elif user_guess_row is None:
+        #    print("You have to ENTER A NUMBER!")
+        #    continue
         else:
             break
 
-    #if user_guess_row :
-     #   print("Your row number is not in the correct range")
-      #  user_guess_row = int(input("Enter row number that is IN RANGE 0 - 5 \n"))
-    #else:
-     #   print("Your row number is valid")
-        
+
+    while True:
+        try:
+            user_guess_column = int(input("Enter your column here: \n"))
+        except ValueError:
+            print ("Make sure you enter a column number that is an INTEGER!")
+            continue
+        if user_guess_column < 0:
+            print("Your column number CANNOT BE A NEGATIVE NUMBER!")
+            continue
+        elif user_guess_column > BOARD_GRID_SIZE:
+            print("Your column number CANNOT BE BIGGER THAN THE GRID SIZE!")
+            continue
+        elif user_guess_column is None:
+            print("You have to ENTER A NUMBER!")
+            continue
+        else:
+            break
     
-  
 
-        
-    user_guess_column = input(("Enter your column here: "))
-    #While user_guess_column not in '012345':
-    #    print("Column coordinate not valid, try again")
-    #   user_guess_column = input(("Enter your column here: "))
-    #while user_guess_column is None:
-     #   print("You need to enter a column number.")
-      #  user_guess_column = input("Enter your column here: ")
-       # if user_guess_column is not int:
-    #        print("Column number needs to be an integer")
-     #       user_guess_column = input("Enter your column here: ")
-      #  elif user_guess_column < 0:   
-       #     print("Column number needs to be a positive number")
-        #    user_guess_column = input("Enter your column here: ")
-    #    elif user_guess_column > 5:
-     #       print("Column number needs to be less than or equal to 5.")
-      #      user_guess_column = input("Enter your column here: ")  
-       # else:
-        #    continue
-
-    print(f"Your coordinate: [{user_guess_row} , {user_guess_column}]")
-    #print(f"Your coordinate: [{user_guess_column} , {user_guess_row}]")
+    print(f"Your coordinate: [{user_guess_column} , {user_guess_row}]")
     return int(user_guess_row), int(user_guess_column)
 
 
