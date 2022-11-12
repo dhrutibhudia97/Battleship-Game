@@ -15,11 +15,18 @@ class BoardStates(enum.Enum):
 
 # user board set up
 USER_BOARD = [[BoardStates.EMPTY.value] * BOARD_GRID_SIZE for x in range(BOARD_GRID_SIZE)]
-# hidden computer board
-#COMPUTERS_BOARD = [[" "] * BOARD_GRID_SIZE for y in range(BOARD_GRID_SIZE)]
-# .replace and . split are not working to remove comma so used this method instead
+
 # function to see the board
 def print_game_board(user_name, game_board):
+    """
+    Prints user board with 6 rows and 6 columns.
+
+    The column is labelled. The BoardStates constant that is printed 
+    is "o" which represents empty unhit spaces. The 5 randomly 
+    generated ships which have the board state "X" are replaces 
+    with "o" before board is printed so user doesn't know where 
+    the ships are.
+    """
     print(f"{user_name}'s BOARD:\n")
     print('     column   ')
     print('   0 1 2 3 4 5')
@@ -38,49 +45,38 @@ def print_game_board(user_name, game_board):
             #if row_num = (BOARD_GRID_SIZE - 1):
             #    break
             
-#print_game_board(USER_BOARD)
-#print("\n")
-
-#def print_computer_board(game_board):
- #   print('COMPUTER BOARD: ')
-  #  print('   0 1 2 3 4 5')
-   # print('---------------')
-    #row_num = 0
-    # computer hidden game board
-    #for row in game_board:
-     #   print("%d |%s|" % (row_num, "|".join(row)))
-      #  row_num += 1
-#print_computer_board(COMPUTERS_BOARD)
-
 
 #get computer random generated ship location
 def computers_ships(game_board):
+    """
+    Randomly generates 5 sets of ship coordinates to place on the board.
+    
+    If the same coordinates 
+    selected randomly more then once the function just generates 
+    coordinates again.
+    """
     for target in range(NO_OF_SHIPS):
         target_row = randint(0, BOARD_GRID_SIZE - 1)
         target_col = randint(0, BOARD_GRID_SIZE - 1)
         while game_board[target_row][target_col] == BoardStates.SHIP_ALIVE.value:
             target_row = randint(0, BOARD_GRID_SIZE - 1)
             target_col = randint(0, BOARD_GRID_SIZE - 1)
-	        # target_row, target_col = user_input()
+	        
         game_board[target_row][target_col] = BoardStates.SHIP_ALIVE.value 
-# NEED TO ADD THESE AS VALIDITY CHECKERS
-# user needs to input data
-# users guess is stored so they can't guess same numbers again
-# invalid user input/error options if (1)Not an integer (is.digit...?)
-# elif (2) Integer not in range. else(3)Guessed that integer combo already
-# print user prompt message
+
 
 # asks users what row and column to guess battleship is in
 def user_input():
-    print("\nCoordinates should be a number between 0 - 5.")
-    #user_guess_row = input("Enter your row here: ")
-    #while user_guess_row not in '012345':
-    #    print("Column coordinate not an integer. Input a number between 0-5")
-    #    user_guess_row = input("Enter your row here: ")
-    # 
+    """
+    User inputs there row and column number.
+
+    Validity checker, to check if the data inputed was an integer.
+    This also checks if an inout was given and if it were a string it 
+    just asks user again. It then checks in integer input was in range.
+    """
     while True:
         try:
-            user_guess_row = int(input("Enter your row here: \n"))
+            user_guess_row = int(input("\nEnter your row here: \n"))
         except ValueError:
             print ("Make sure you enter a row number that is an INTEGER!")
             continue
@@ -90,9 +86,6 @@ def user_input():
         elif user_guess_row > (BOARD_GRID_SIZE -1):
             print("Your row number CANNOT BE BIGGER THAN THE GRID SIZE!")
             continue
-        #elif user_guess_row is None:
-        #    print("You have to ENTER A NUMBER!")
-        #    continue
         else:
             break
 
@@ -121,9 +114,14 @@ def user_input():
 
 
 # game function, only runs if there are user turns left and ships left to hit.
-#computers_ships(COMPUTERS_BOARD)
-#print_game_board(COMPUTERS_BOARD)
 def start_game():
+    """
+    The game function that only runs if there are turns left or the user score 
+    hasn't reached 5.
+
+    Checks if the users input misses or hits the ships. Or has already been given.
+    Contains input for user to insert their name to personalise the board.
+    """
     user_score = 0
     turns_left = 20
     print("This is a game of Battleships")
@@ -134,7 +132,6 @@ def start_game():
 
     computers_ships(USER_BOARD)
     while turns_left > 0 or user_score < 5:
-        #print("Welcome to the game")
         print_game_board(user_name, USER_BOARD)
         user_guess_row, user_guess_column = user_input()
         print('\n')
