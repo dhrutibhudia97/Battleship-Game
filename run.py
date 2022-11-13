@@ -43,7 +43,7 @@ def print_game_board(user_name, game_board):
     and the user_name to allow users name to display above the board when it
     is printed.
     """
-    print(f"{user_name}'s BOARD:\n")
+    print(f"{user_name.title()}'s BOARD:\n")
     print('     column   ')
     print('   0 1 2 3 4 5')
     print('---------------')
