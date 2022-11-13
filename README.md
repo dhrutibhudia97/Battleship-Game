@@ -122,6 +122,10 @@ Make game 2 player and add a computer board which allows computer to guess coord
 
 
 ## Credits
+- https://www.youtube.com/watch?v=7Ki_2gr0rsE&ab_channel=DylanIsrael - for making board and layout of grid.
+- love sandwiches module used for template for user input and making sure its valid.		
+- https://www.youtube.com/watch?v=tF1WRCrd_HQ&ab_channel=KnowledgeMavens - labeling column of user and computer grid using print("%d|%s"..)
+
 
 
 
