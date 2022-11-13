@@ -94,7 +94,6 @@ The different symbols of the board represent the different states the locations 
 
 
 
-
 ## Testing
 PEP8 linter
 checked invalid inputs can be entered and does exit game

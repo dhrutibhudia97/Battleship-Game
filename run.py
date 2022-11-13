@@ -170,11 +170,11 @@ def start_game():
         print_game_board(user_name, USER_BOARD)
         user_guess_row, user_guess_column = user_input()
         print('\n')
-        print(USER_BOARD[user_guess_row][user_guess_column])
+        #print(USER_BOARD[user_guess_row][user_guess_column])
         if (USER_BOARD[user_guess_row][user_guess_column] == BoardStates.WRONG_GUESS.value):
-            print("You have already guessed this coordinate. Guess again")
+            print("You have already guessed this coordinate. Guess again\n")
         elif (USER_BOARD[user_guess_row][user_guess_column] == BoardStates.SHIP_HIT.value):
-            print("You have already hit this ship! \n")
+            print("You have already hit this ship!\n")
             turns_left = turns_left
             user_score = user_score
         elif (USER_BOARD[user_guess_row][user_guess_column] == BoardStates.SHIP_ALIVE.value):
@@ -191,7 +191,7 @@ def start_game():
             print_game_board(user_name, USER_BOARD)
             break
         print(f"User Score: {user_score}")
-        print(f"You have {turns_left} turns left")
+        print(f"You have {turns_left} turns left\n")
         if turns_left == 0:
             print("No more turns left! GAME OVER")
             print_game_board(user_name, USER_BOARD)
