@@ -8,6 +8,17 @@ BOARD_GRID_SIZE = 6
 NO_OF_SHIPS = 5
 
 class BoardStates(enum.Enum):
+    """
+    The different states the user board can take depending on the outcome.
+
+    When the board is initially printed all of the coordinates will be printed
+    with "o" to represent empty spaces that haven't been hit. 5 of these 
+    coordinates randomly selected by the computer_ships function will be "X"
+    that represent that ships that havent been hit, but before the board was printed
+    these "X" were replaced to "o" so user doesn't know where they are.
+    Everytime the user selects a coordinates and misses the "o" changes to "-".
+    when they hit a ship the "o" changes to "x" represent a hit ship.
+    """
     EMPTY = "o"
     SHIP_HIT = "x"
     SHIP_ALIVE = "X"
@@ -119,8 +130,9 @@ def start_game():
     The game function that only runs if there are turns left or the user score 
     hasn't reached 5.
 
-    Checks if the users input misses or hits the ships. Or has already been given.
-    Contains input for user to insert their name to personalise the board.
+    Checks if the users input misses or hits the ships but matching it to the
+    BoardStates constants. Or has already been given. Contains input for user 
+    to insert their name to personalise the board.
     """
     user_score = 0
     turns_left = 20
