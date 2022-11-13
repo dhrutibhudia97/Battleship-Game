@@ -92,25 +92,30 @@ The different symbols of the board represent the different states the locations 
 
 ## Data Model
 
+A grid is created that represents the users board. It holds the 5 randomly generated ships. When each turn the users board hold the data of the previous coordinates picked. The location of the ships and the users current score and turns left. 
+The class "BoardStates" is used which contain enumerations for the different states each position of the board can be: Empty, Alive ships, Hit ships and Missed guesses.
 
 
 ## Testing
-PEP8 linter
-checked invalid inputs can be entered and does exit game
-test game outputs of heroku terminal... i.e game stops if no turns left or 5 is scored.
+- I have manually checked that the users inputs are valid before the game function runs. When the users row or column input is: blank, a string, float, a negative integer or a integer bigger than 5 the user is prompted to enter another input.
+- I have tested that the users inputs in the game function effects the users score and turns left correctly. If the same coordinate is selected this has no effect on the turns left or user score.
+
+- Test game outputs of heroku terminal... i.e game stops if no turns left or 5 is scored...
+- - PEP8 linter
 
 
 ### Bugs
 
 #### Resolved Bugs
-- forgetted the rows were indexed so kept getting errors that it was out of range i just needed to decrease range for 0-6 to 0-5.
+- Forgot the rows were indexed so kept getting errors that it was out of range, I needed to decrease range for BOARD_GRID_SIZE to (BOARD_GRID_SIZE -1).
+- Selecting the same coordinates kept increasing the user score and decreasing turns left. I added extra if/elif statements to the state_game function that prompted user to input row or column number they haven't picked before if they hit a "-" or "x" on the board.
 
 #### Unresolved Bugs
 - No unresolved bugs.
 
 
 ### Future Features
-allow random coordinates on user board and computer to guess and try to hit users board... add to game function "while computer_score <5.."
+Make game 2 player and add a computer board which allows computer to guess coordinates on user board and vice versa.
 
 
 ## Deployment
