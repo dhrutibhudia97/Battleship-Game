@@ -193,7 +193,7 @@ def start_game():
         print(f"User Score: {user_score}")
         print(f"You have {turns_left} turns left\n")
         if turns_left == 0:
-            print("No more turns left! GAME OVER")
+            print("No more turns left! GAME OVER\n")
             print_game_board(user_name, USER_BOARD)
             break
 
