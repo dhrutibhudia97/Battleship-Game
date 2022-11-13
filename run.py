@@ -122,16 +122,13 @@ def user_input():
         try:
             user_guess_column = int(input("Enter your column here: \n"))
         except ValueError:
-            print ("Make sure you enter a column number that is an INTEGER!")
+            print ("Make sure you enter a column number that is an INTEGER!\n")
             continue
         if user_guess_column < 0:
-            print("Your column number CANNOT BE A NEGATIVE NUMBER!")
+            print("Your column number CANNOT BE A NEGATIVE NUMBER!\n")
             continue
         elif user_guess_column > (BOARD_GRID_SIZE -1):
-            print("Your column number CANNOT BE BIGGER THAN THE GRID SIZE!")
-            continue
-        elif user_guess_column is None:
-            print("You have to ENTER A NUMBER!")
+            print("Your column number CANNOT BE BIGGER THAN THE GRID SIZE!\n")
             continue
         else:
             break
@@ -159,18 +156,17 @@ def start_game():
     """
     user_score = 0
     turns_left = 20
-    print("This is a game of Battleships")
+    print("This is a game of Battleships\n")
     # insert name to personalise user board name
-    user_name = input("Enter your name here: \n")
-    print(f"Hi {user_name}, get ready to play BattleShips!")
-    print('\n')
+    user_name = input("Enter your name here: ")
+    print(f"\nHi {user_name}, get ready to play BattleShips!\n")
+
 
     computers_ships(USER_BOARD)
     while turns_left > 0 or user_score < 5:
         print_game_board(user_name, USER_BOARD)
         user_guess_row, user_guess_column = user_input()
         print('\n')
-        #print(USER_BOARD[user_guess_row][user_guess_column])
         if (USER_BOARD[user_guess_row][user_guess_column] == BoardStates.WRONG_GUESS.value):
             print("You have already guessed this coordinate. Guess again\n")
         elif (USER_BOARD[user_guess_row][user_guess_column] == BoardStates.SHIP_HIT.value):
@@ -197,6 +193,9 @@ def start_game():
             print_game_board(user_name, USER_BOARD)
             break
 
-#Allows the game to run in a global scope.
+
 if __name__ == "__main__":
+    """
+    Allows start_game function to run on a global scope.
+    """
     start_game()
