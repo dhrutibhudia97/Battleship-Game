@@ -27,23 +27,37 @@ Connect your GitHub repository and deploy as normal.
 
 The deployment terminal is set to 80 columns by 24 rows. That means that each line of text needs to be 80 characters or less otherwise it will be wrapped onto a second line.
 
+
 -----
 Happy coding!
 
 
 
-BATTLESHIP GAME
-reason for game
-purpose it serves 
-target audience...
+# BATTLESHIP GAME
 
-[screenshot of it on different devices]
+The BattleShip game is a game in the python terminal run using Heroku.
+The aim of this game is for users to try and find the computers 5 battleships on the game board by guessing the coordinates correctly in 20 turns or under. The board grid 
+size has 36 spaces and each battleship takes up 1 space.
+This game can entertain the user with minimal knowledge needed before hand so it is easy for anyone to play, as no other player is needed and they just need to guess a row and colun number.
+
+[insert screenshot of it on different devices.]
 
 
-Rules of game...
-key of what dif symbols mean...
+## The rules of the game
 
-Features...
+Battleships game is based of the 2 player board game when users take it in turn to guess where the ship is on there users board and it they guess correctly they destroy the ship. More info about this game can be found here: https://en.wikipedia.org/wiki/Battleship_(game)
+
+This game varies slightly by firstly being 1 player so the user is just guessing where the computers ships are.
+The different symbols of the board represent the different states the locations on the board can be in.
+
+- Initially the board is printed, all positions are represented with "o" with represents and empty space that can be hit.
+- Once the users guess a valid row and column number, this coordinate on the board is checked to see if that position is empty in which case the "o" turns to "-" representing a wrong guess. 
+- If the location they hit has a ship the "o" turns to a "x" that represents a ship has been hit.
+- To win this game the user need to hit all 5 computer ships and get 5 "x" on their board before their 20 turns are finished.
+
+
+## Features
+
 - personalised board printed with user name...
 - board labelled with x and y axis
 - 5 random coordinates generated 
@@ -55,27 +69,30 @@ Features...
 - if not turns left OR score ==5 game over.
 
 
-data model...
+## data model...
 
-TESTING
+## TESTING
 PEP8 linter
 checked invalid inputs can be entered and does exit game
 test game outputs of heroku terminal... i.e game stops if no turns left or 5 is scored.
 
 
-bugs...
-resolves bugs...
+### bugs...
+### resolves bugs...
 - forgetted the rows were indexed so kept getting errors that it was out of range i just needed to decrease range for 0-6 to 0-5.
+### unresolved bugs...
 
-
-deployment...
-
-
-credits...
-
-
-
-unresolved bugs...
-
-future features...
+### future features...
 allow random coordinates on user board and computer to guess and try to hit users board... add to game function "while computer_score <5.."
+
+
+## deployment...
+
+
+## credits...
+
+
+
+
+
+
