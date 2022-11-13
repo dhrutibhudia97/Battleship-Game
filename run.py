@@ -1,10 +1,6 @@
 from random import randint
 import enum
 
-# Your code goes here.
-# You can delete these comments, but do not change the name of this file
-# Write your code to expect a terminal of 80 characters wide and 24 rows high
-
 BOARD_GRID_SIZE = 6
 NO_OF_SHIPS = 5
 
@@ -20,9 +16,9 @@ class BoardStates(enum.Enum):
     coordinates randomly selected by the computer_ships function will be "X"
     that represent ships that haven't been hit, but before the board is printed
     the "X" is replaced to "o" so the user doesn't know where they are.
-    Every time the user selects a coordinate and misses, the "o" changes to "-".
-    When they hit a ship the "o" changes to "x" to represent a hit ship. Both result in
-    turns_left decreasing by 1.
+    Every time the user selects a coordinate and misses, the "o" changes to 
+    "-". When they hit a ship the "o" changes to "x" to represent a hit ship. 
+    Both result in number of turns left to decrease by 1.
     """
 
     EMPTY = "o"
@@ -31,7 +27,8 @@ class BoardStates(enum.Enum):
     WRONG_GUESS = "-"
 
 
-# User board set up. All coordinates are represented with the Empty "o" BoardState symbol.
+# User board set up.
+# All coordinates are represented with the Empty "o" BoardStates symbol.
 USER_BOARD = [
     [BoardStates.EMPTY.value] * BOARD_GRID_SIZE for x in range(BOARD_GRID_SIZE)
 ]
@@ -90,12 +87,13 @@ def computers_ships(game_board):
 
 def user_input():
     """
-    The user inputs their guess for row and column number to what row and column the ship is on the game board.
+    The user inputs their guess for the row and column the ship is on.
 
     Validity checker for user input using Try/Except loop to check if the data
-    input was an integer or if any input was given, or if the input was a string.
-    An if/else if/else loop then checks if the integer input was in the correct range.
-    if integer input is in the correct range it breaks out of the loop.
+    input was an integer or if any input was given, or if the input was a 
+    string. An if/else if/else loop then checks if the integer input was in 
+    the correct range. If integer input is in the correct range it breaks out 
+    of the loop.
     """
     while True:
         try:
@@ -134,17 +132,20 @@ def user_input():
 def start_game():
     """
     The game function only runs if there are turns left or the user score
-    hasn't reached 5. When either the number of turns left is 0 or the user score is 5 the
-    start_game function doesn't run. The game is over and the final game board is printed.
+    hasn't reached 5. When either the number of turns left is 0 or the 
+    user score is 5 the start_game function doesn't run. The game is over 
+    and the final game board is printed.
 
-    Checks if the user input from the user input function misses or hits the ships
-    by matching it to the BoardStates constants, if the coordinate hits an "o" it
-    means they missed the ship and that coordinate is replaced with "-" to represent
-    a wrong guess and turns left decreases by 1. If the coordinate hits an "X" means
-    they have hit a ship and this gets replaced with an "x" to represent a hit ship,
-    turns left decrease by 1, and the user score increases by 1. If the coordinate hits
-    a "-" or "x" it means they have hit this before so their turns left don't decrease.
-    Contains input for user to insert their name to personalise the board when it is printed.
+    Checks if the user input from the user input function misses or hits the 
+    ships by matching it to the BoardStates constants, if the coordinate hits 
+    an "o" it means they missed the ship and that coordinate is replaced with 
+    "-" to represent a wrong guess and turns left decreases by 1. If the 
+    coordinate hits an "X" means they have hit a ship and this gets replaced 
+    with an "x" to represent a hit ship, turns left decrease by 1, and the 
+    user score increases by 1. If the coordinate hits a "-" or "x" it means 
+    they have hit this before so their turns left don't decrease. Contains 
+    input for user to insert their name to personalise the board when it is 
+    printed.
     """
     user_score = 0
     turns_left = 20
@@ -167,8 +168,6 @@ def start_game():
             USER_BOARD[user_guess_row][user_guess_column] == BoardStates.SHIP_HIT.value
         ):
             print("You have already hit this ship!\n")
-            turns_left = turns_left
-            user_score = user_score
         elif (
             USER_BOARD[user_guess_row][user_guess_column]
             == BoardStates.SHIP_ALIVE.value
