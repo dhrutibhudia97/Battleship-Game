@@ -120,6 +120,7 @@ Make game 2 player and add a computer board which allows computer to guess coord
 
 ## Deployment
 HAVEN'T FORKED/CLONED REPOSITORY
+
 Steps for deployment:
 1) On Heroku dashboard selected "create new app"
 2) Add Buildpacks:
@@ -131,10 +132,9 @@ Steps for deployment:
 4) Linked the Heruko app to the GitHub repository "Battleship-Game"
 5) Clicked on "Manually Deploy"
 
-The app was deployed successfully on Heroku.
-A Config Var was added - key:PORT value:8000.
-The 2 buildpacks python and nodejs were added.
-It has been manually deployed.
+https://battleship-game-db.herokuapp.com/
+
+
 
 
 ## Credits
