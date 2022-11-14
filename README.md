@@ -111,7 +111,7 @@ The class "BoardStates" is used which contain enumerations for the different sta
 - Selecting the same coordinates kept increasing the user score and decreasing turns left. I added extra if/elif statements to the state_game function that prompted user to input row or column number they haven't picked before if they hit a "-" or "x" on the board.
 
 #### Unresolved Bugs
-- No unresolved bugs.
+- Labelling the rows of the grid by spelling "row" vertically next to the row numbers. Tried using "print("%s |%d |%s|" % (i, row_num, row_to_be_printed))" where "i" represented each letter in the string "row" but this just printed the table 6 times. So I have labelled the column but not the row.
 
 
 ### Future Features
