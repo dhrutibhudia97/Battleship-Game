@@ -1,13 +1,21 @@
 """
 Module doc string...
-"randint" is a function imported from the "random" library used to help generate 5 coordinates for the users ships.
-"enum" has been imported to the enumerations of the different board states.
-class "BoardStates" contains the symbols printed on the board what what they mean in the game.
-The USER_BOARD constant contains the parameters of the user board on which the game occurs.
-"print_game_board" function prints the game board with updated boardstates everytime user inputs valid ship guess.
-"computer_ships" function randomly generated 5 coordinates that represent the computers ships in the users board.
-"user_input" function allows user to enter row and column number which it then checks is valid.
-"start_game" function then checks the users valid coordinates to see if hits or misses a ship or has been selected before.
+"randint" is a function imported from the "random" library used to help 
+generate 5 coordinates for the users ships.
+"enum" has been imported to the enumerations of the different board 
+states.
+Class "BoardStates" contains the symbols printed on the board what 
+what they mean in the game.
+The USER_BOARD constant contains the parameters of the user board on 
+which the game occurs.
+"print_game_board" function prints the game board with updated boardstates 
+everytime user inputs valid ship guess.
+"computer_ships" function randomly generated 5 coordinates that represent 
+the computers ships in the users board.
+"user_input" function allows user to enter row and column number which it 
+then checks is valid.
+"start_game" function then checks the users valid coordinates to see if hits 
+or misses a ship or has been selected before.
 """
 
 from random import randint
