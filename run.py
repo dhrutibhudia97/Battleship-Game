@@ -184,10 +184,9 @@ def start_game():
     # insert name to personalise user board name
     user_name = input("Enter your name here: ")
     print(f"\nHi {user_name}, get ready to play BattleShips!\n")
-    print("Symbol key:\no = Empty space that hasn't been hit") 
+    print("Symbol key:\no = Empty space that hasn't been hit")
     print("x = Hit Ship")
     print("- = Missed Ship \n")
-   
 
     computers_ships(USER_BOARD)
     while turns_left > 0 or user_score < 5:
