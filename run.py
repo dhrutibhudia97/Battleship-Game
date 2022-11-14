@@ -195,7 +195,5 @@ def start_game():
 
 
 if __name__ == "__main__":
-    """
-    Allows start_game function to run on a global scope.
-    """
+    # Allows start_game function to run on a global scope.
     start_game()
