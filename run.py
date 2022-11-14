@@ -1,3 +1,15 @@
+"""
+Module doc string...
+"randint" is a function imported from the "random" library used to help generate 5 coordinates for the users ships.
+"enum" has been imported to the enumerations of the different board states.
+class "BoardStates" contains the symbols printed on the board what what they mean in the game.
+The USER_BOARD constant contains the parameters of the user board on which the game occurs.
+"print_game_board" function prints the game board with updated boardstates everytime user inputs valid ship guess.
+"computer_ships" function randomly generated 5 coordinates that represent the computers ships in the users board.
+"user_input" function allows user to enter row and column number which it then checks is valid.
+"start_game" function then checks the users valid coordinates to see if hits or misses a ship or has been selected before.
+"""
+
 from random import randint
 import enum
 
@@ -16,8 +28,8 @@ class BoardStates(enum.Enum):
     coordinates randomly selected by the computer_ships function will be "X"
     that represent ships that haven't been hit, but before the board is printed
     the "X" is replaced to "o" so the user doesn't know where they are.
-    Every time the user selects a coordinate and misses, the "o" changes to 
-    "-". When they hit a ship the "o" changes to "x" to represent a hit ship. 
+    Every time the user selects a coordinate and misses, the "o" changes to
+    "-". When they hit a ship the "o" changes to "x" to represent a hit ship.
     Both result in number of turns left to decrease by 1.
     """
 
@@ -90,9 +102,9 @@ def user_input():
     The user inputs their guess for the row and column the ship is on.
 
     Validity checker for user input using Try/Except loop to check if the data
-    input was an integer or if any input was given, or if the input was a 
-    string. An if/else if/else loop then checks if the integer input was in 
-    the correct range. If integer input is in the correct range it breaks out 
+    input was an integer or if any input was given, or if the input was a
+    string. An if/else if/else loop then checks if the integer input was in
+    the correct range. If integer input is in the correct range it breaks out
     of the loop.
     """
     while True:
@@ -132,19 +144,19 @@ def user_input():
 def start_game():
     """
     The game function only runs if there are turns left or the user score
-    hasn't reached 5. When either the number of turns left is 0 or the 
-    user score is 5 the start_game function doesn't run. The game is over 
+    hasn't reached 5. When either the number of turns left is 0 or the
+    user score is 5 the start_game function doesn't run. The game is over
     and the final game board is printed.
 
-    Checks if the user input from the user input function misses or hits the 
-    ships by matching it to the BoardStates constants, if the coordinate hits 
-    an "o" it means they missed the ship and that coordinate is replaced with 
-    "-" to represent a wrong guess and turns left decreases by 1. If the 
-    coordinate hits an "X" means they have hit a ship and this gets replaced 
-    with an "x" to represent a hit ship, turns left decrease by 1, and the 
-    user score increases by 1. If the coordinate hits a "-" or "x" it means 
-    they have hit this before so their turns left don't decrease. Contains 
-    input for user to insert their name to personalise the board when it is 
+    Checks if the user input from the user input function misses or hits the
+    ships by matching it to the BoardStates constants, if the coordinate hits
+    an "o" it means they missed the ship and that coordinate is replaced with
+    "-" to represent a wrong guess and turns left decreases by 1. If the
+    coordinate hits an "X" means they have hit a ship and this gets replaced
+    with an "x" to represent a hit ship, turns left decrease by 1, and the
+    user score increases by 1. If the coordinate hits a "-" or "x" it means
+    they have hit this before so their turns left don't decrease. Contains
+    input for user to insert their name to personalise the board when it is
     printed.
     """
     user_score = 0
