@@ -6,9 +6,9 @@
 The BattleShip game is a game in the python terminal run using Heroku.
 The aim of this game is for users to try and find the computers' 5 battleships on the game board by guessing the coordinates correctly in 20 turns or under. 
 The board grid size is (6x6), 36 spaces and each of the 5 battleships takes up 1 space.
-This game can entertain the user with minimal knowledge needed beforehand so it is easy for anyone to play, as no other player is needed and they just need to guess a row and column number.
+The purpose of this game is to entertain the user with minimal knowledge needed beforehand as the outcome of the game is based off luck. It is easy for anyone to play, no other player is needed and they just need to guess a row and column number. They have to guess where the 5 ships are before their turns run out. The target audience is anyone is wants to play a game against the computer.
 
-[insert screenshot of it on different devices.]
+![python responsive screen design](https://user-images.githubusercontent.com/107180641/201770085-acfe3871-bb03-4f19-a97a-7cf4ee732a7e.png)
 
 
 ## The Rules Of The Game
@@ -108,10 +108,10 @@ https://battleship-game-db.herokuapp.com/
 
 
 ## Credits
-- For helping make the grid layout for the game board 
+- For helping make the grid layout for the USER_BOARD
     - https://www.youtube.com/watch?v=7Ki_2gr0rsE&ab_channel=DylanIsrael 
 - For help with the initial template used to make sure user input was valid.
-    - Love sandwiches module from Code Institute 	
+    - Love Sandwiches module from Code Institute 	
 - To label the column and number of row of the grid. Also for idea to use while loop when randomly generating ship coordinates to not get any repeats. Idea for general if/else-if/else loop used in game function.
     - https://www.youtube.com/watch?v=tF1WRCrd_HQ&ab_channel=KnowledgeMavens - 
 - For ideas about adding constants for grid size and the number of ships. Also for the idea of enumerations for the different board states.

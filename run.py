@@ -1,5 +1,6 @@
 """
 Module doc string...
+
 "randint" is a function imported from the "random" library used to help 
 generate 5 coordinates for the users ships.
 "enum" has been imported to the enumerations of the different board 
@@ -65,7 +66,10 @@ def print_game_board(user_name, game_board):
     the ships are. The two parameters for this function are the game_board
     and the user_name to allow the user name to display above the board when it
     is printed.
+    https://www.youtube.com/watch?v=tF1WRCrd_HQ - time of video:6:47 - This 
+    tutorial used to help number and label the column and row of the game board
     """
+
     print(f"{user_name.title()}'s BOARD:\n")
     print("     column   ")
     print("   0 1 2 3 4 5")
@@ -94,6 +98,10 @@ def computers_ships(game_board):
     function uses a while loop to generate coordinates again until
     they haven't been repeated. These random coordinates are then represented
     on the game board using the BoardState enumeration for SHIP_ALIVE "X".
+
+    https://www.youtube.com/watch?v=tF1WRCrd_HQ - time of video 11:10 - 
+    Youtube tutorial used to helpset up while loop to make sure random 
+    coordinates generated aren't the same.
     """
     for target in range(NO_OF_SHIPS):
         target_row = randint(0, BOARD_GRID_SIZE - 1)
@@ -166,6 +174,10 @@ def start_game():
     they have hit this before so their turns left don't decrease. Contains
     input for user to insert their name to personalise the board when it is
     printed.
+
+    https://www.youtube.com/watch?v=tF1WRCrd_HQ - Time of video 19:55 - Youtube
+    tutorial used to help with general format of if/else-if/else loop used to 
+    determine the game outcome.
     """
     user_score = 0
     turns_left = 20
