@@ -113,10 +113,3 @@ https://battleship-game-db.herokuapp.com/
 - https://www.youtube.com/watch?v=tF1WRCrd_HQ&ab_channel=KnowledgeMavens - labeling column of user and computer grid using print("%d|%s"..)
 - Mentor Sandeep Aggarwal for ideas about adding constants for grid size and the number of ships. Also for the idea of enumerations for the different board states.
 
-
-
-
-
-
-
-
