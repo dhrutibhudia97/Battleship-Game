@@ -108,8 +108,13 @@ https://battleship-game-db.herokuapp.com/
 
 
 ## Credits
-- https://www.youtube.com/watch?v=7Ki_2gr0rsE&ab_channel=DylanIsrael - for making board and layout of the grid.
-- love sandwiches module from code institute - used for a template for user input and making sure it is valid.		
-- https://www.youtube.com/watch?v=tF1WRCrd_HQ&ab_channel=KnowledgeMavens - labeling column of user and computer grid using print("%d|%s"..)
-- Mentor Sandeep Aggarwal for ideas about adding constants for grid size and the number of ships. Also for the idea of enumerations for the different board states.
-
+- For helping make the grid layout for the game board 
+    - https://www.youtube.com/watch?v=7Ki_2gr0rsE&ab_channel=DylanIsrael 
+- For help with the initial template used to make sure user input was valid.
+    - Love sandwiches module from Code Institute 	
+- To label the column and number of row of the grid. Also for idea to use while loop when randomly generating ship coordinates to not get any repeats. Idea for general if/else-if/else loop used in game function.
+    - https://www.youtube.com/watch?v=tF1WRCrd_HQ&ab_channel=KnowledgeMavens - 
+- For ideas about adding constants for grid size and the number of ships. Also for the idea of enumerations for the different board states.
+    - Mentor Sandeep Aggarwal
+- For converting input into integers.
+    - https://pynative.com/python-check-user-input-is-number-or-string/#:~:text=To%20check%20if%20the%20input%20string%20is%20an%20integer%20number,using%20the%20int()%20constructor.&text=To%20check%20if%20the%20input%20is%20a%20float%20number%2C%20convert,using%20the%20float()%20constructor.
