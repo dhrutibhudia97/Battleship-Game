@@ -1,21 +1,20 @@
 """
 Module doc string...
 
-"randint" is a function imported from the "random" library used to help 
+"randint" is a function imported from the "random" library used to help
 generate 5 coordinates for the users ships.
-"enum" has been imported to the enumerations of the different board 
-states.
-Class "BoardStates" contains the symbols printed on the board what 
-what they mean in the game.
-The USER_BOARD constant contains the parameters of the user board on 
+"enum" has been imported to the enumerations of the different board states.
+Class "BoardStates" contains the symbols printed on the board and what they
+mean in the game.
+The USER_BOARD constant contains the parameters of the user board on
 which the game occurs.
-"print_game_board" function prints the game board with updated boardstates 
+"print_game_board" function prints the game board with updated boardstates
 everytime user inputs valid ship guess.
-"computer_ships" function randomly generated 5 coordinates that represent 
+"computer_ships" function randomly generated 5 coordinates that represent
 the computers ships in the users board.
-"user_input" function allows user to enter row and column number which it 
+"user_input" function allows user to enter row and column number which it
 then checks is valid.
-"start_game" function then checks the users valid coordinates to see if hits 
+"start_game" function then checks the users valid coordinates to see if hits
 or misses a ship or has been selected before.
 """
 
@@ -66,7 +65,7 @@ def print_game_board(user_name, game_board):
     the ships are. The two parameters for this function are the game_board
     and the user_name to allow the user name to display above the board when it
     is printed.
-    https://www.youtube.com/watch?v=tF1WRCrd_HQ - time of video:6:47 - This 
+    https://www.youtube.com/watch?v=tF1WRCrd_HQ - time of video:6:47 - This
     tutorial used to help number and label the column and row of the game board
     """
 
@@ -99,8 +98,8 @@ def computers_ships(game_board):
     they haven't been repeated. These random coordinates are then represented
     on the game board using the BoardState enumeration for SHIP_ALIVE "X".
 
-    https://www.youtube.com/watch?v=tF1WRCrd_HQ - time of video 11:10 - 
-    Youtube tutorial used to helpset up while loop to make sure random 
+    https://www.youtube.com/watch?v=tF1WRCrd_HQ - time of video 11:10 -
+    Youtube tutorial used to helpset up while loop to make sure random
     coordinates generated aren't the same.
     """
     for target in range(NO_OF_SHIPS):
@@ -176,7 +175,7 @@ def start_game():
     printed.
 
     https://www.youtube.com/watch?v=tF1WRCrd_HQ - Time of video 19:55 - Youtube
-    tutorial used to help with general format of if/else-if/else loop used to 
+    tutorial used to help with general format of if/else-if/else loop used to
     determine the game outcome.
     """
     user_score = 0
@@ -185,6 +184,10 @@ def start_game():
     # insert name to personalise user board name
     user_name = input("Enter your name here: ")
     print(f"\nHi {user_name}, get ready to play BattleShips!\n")
+    print("Symbol key:\no = Empty space that hasn't been hit") 
+    print("x = Hit Ship")
+    print("- = Missed Ship \n")
+   
 
     computers_ships(USER_BOARD)
     while turns_left > 0 or user_score < 5:

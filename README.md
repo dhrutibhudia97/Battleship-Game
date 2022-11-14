@@ -89,7 +89,7 @@ Make the game 2-player and add a computer board that allows the computer to gues
 
 
 ## Deployment
-HAVEN'T FORKED/CLONED REPOSITORY
+##HAVEN'T FORKED/CLONED REPOSITORY##
 
 Steps for deployment:
 1) On Heroku dashboard selected "create new app"
