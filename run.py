@@ -24,6 +24,7 @@ import enum
 BOARD_GRID_SIZE = 6
 NO_OF_SHIPS = 5
 
+
 class GameLevel(enum.Enum):
     """
     The different game level for user to pick from. 
@@ -144,14 +145,8 @@ def computers_ships(game_board):
         game_board[target_row][target_col] = BoardStates.SHIP_ALIVE.value
 
 
-def game_level():
-    """
-    Gives user a choice of easy(E), medium(M) or hard(H) to determine the amount of
-    turns they get.
+
     
-    E = 25. M = 20. H = 15. The ships are in 5 of the possible of
-    36 locations on the game grid with is (6x6).
-    """
 
 
 def user_input():
@@ -225,14 +220,27 @@ def start_game():
     # insert name to personalise user board name
     user_name = input("Enter your name here: ")
     print(f"\nHi {user_name.capitalize()}, get ready to play BattleShips!\n")
-    print("Do you want to play an EASY(E), MEDIUM(M) or HARD(H) game?")
-    game_level_choice = input("Enter either E | M | H: ").upper()
-    while game_level_choice != "E" or "M" or "H":
-        print("\nPlease enter E or M or H to choice game level")
-        else:
-            break
-        game_level_choice = input("Enter either E | M | H: ").upper()
-        game_level_choice = game_level
+    
+
+    def game_level():
+        """
+        Gives user a choice of easy(E), medium(M) or hard(H) to determine the amount of
+        turns they get.
+    
+        E = 25. M = 20. H = 15. The ships are in 5 of the possible of 36 locations on
+        the game grid with is (6x6).
+        """
+        while True:
+            print("Do you want to play an EASY(E), MEDIUM(M) or HARD(H) game?")
+            game_level_choice = input("Enter either E | M | H: ").upper()
+            if game_level_choice != "E" or "M" or "H":
+                print("\nPlease enter E or M or H to choice game level")
+                continue
+                game_level_choice = input("Enter either E | M | H: ").upper()
+            else:
+                break
+            game_level_choice = game_level
+
     print("Symbol key:\no = Empty space that hasn't been hit")
     print("x = Hit Ship")
     print("- = You hit nothing \n")
