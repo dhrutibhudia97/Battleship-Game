@@ -4,9 +4,12 @@
 # BATTLESHIP GAME
 
 The BattleShip game is a game in the python terminal run using Heroku.
-The aim of this game is for users to try and find the computers' 5 battleships on the game board by guessing the coordinates correctly in 20 turns or under. 
+The aim of this game is for users to try and find the computers' 5 battleships on the game board by guessing the coordinates correctly before
+their number of turns left run out.
+Users are given an option at the beginning of the game to pick easy/ medium
+or hard. This determines how many turns they get: easy - 25, medium - 20, and hard - 15.
 The board grid size is (6x6), 36 spaces and each of the 5 battleships takes up 1 space.
-The purpose of this game is to entertain the user with minimal knowledge needed beforehand as the outcome of the game is based off luck. It is easy for anyone to play, no other player is needed and they just need to guess a row and column number. They have to guess where the 5 ships are before their turns run out. The target audience is anyone is wants to play a game against the computer.
+The purpose of this game is to entertain the user with no prior knowledge needed as the outcome of the game is based on luck. It is easy for anyone to play, no other player is needed and they just need to guess a row and column number. They have to guess where the 5 ships are before their turns run out. The target audience is anyone is wants to play a game against the computer.
 
 ![python responsive screen design](https://user-images.githubusercontent.com/107180641/201770085-acfe3871-bb03-4f19-a97a-7cf4ee732a7e.png)
 
@@ -15,8 +18,8 @@ The purpose of this game is to entertain the user with minimal knowledge needed 
 
 Battleships game is based on a 2 player board game in which users take turns to guess where the ship is on their game board and if they guess correctly they destroy the ship. More info about this game can be found here: https://en.wikipedia.org/wiki/Battleship_(game)
 
-This game varies slightly by firstly being 1 player so the user is just guessing where the computer's ships are.
-The different symbols of the board represent the different states the locations on the board can be in.
+This game varies slightly by firstly being 1-player so the user is just guessing where the computer's ships are.
+The different symbols on the board represent the different states the locations on the board can be in.
 
 - Initially, the board is printed, and all positions are filled with "o" which represents an empty space that can be hit.
 - Once the users guess a valid row and column number, this coordinate on the board is checked to see if that position is empty in which case the "o" turns to "-" representing a wrong guess. 
@@ -27,6 +30,12 @@ The different symbols of the board represent the different states the locations 
 ## Features
 
 ### Existing Feature
+
+#### Game difficulty choice
+- The user gets the choice at the beginning of the game Easy/Medium/Hard. This
+determines how many turns they get to guess the location of the ships.
+
+[insert screen shot of intro question]
 
 #### Random Coordinate Generator
 - The computer generates 5 random coordinates to place ships on the game board using the random library that has been imported.
@@ -52,12 +61,15 @@ The different symbols of the board represent the different states the locations 
 [insert screenshot of either hitting all ships and winning the game]
 [losing game by not hitting all ships.]
 
-#### The User Coordinates Are Saved For Each Round Of The Game.
- 
+#### Game board saves previous coordinates from each round
+- All positions that have been chosen on the board get turned to "x" or "-" so in the game function the same coordinates can't be entered multiple times.
 
+#### Printing final board
+- This prints board at the end of the game. It shows the location of all the un-hit ships represented with "X" if the user loses the game. If the user wins, the board with show all 5 hit ships represented with "x"
+
+ 
 ### Future Features
 - Allow it to be a 2-player game with the computer randomly guessing coordinates to hit users' ships.
-- Allow various battleship sizes to take up more than one coordinate space.
 
 
 ## Data Model
@@ -83,9 +95,8 @@ The class "BoardStates" is used which contains enumerations for the different st
 | Start game function not increasing user score multiple times if same ship is hit| Entering same coordinates for a known ship location| ✓ Message shows telling user they have already hit this ship and to guess again. User score does not increase and the number of turns left does not decrease| 
 |Start game function when user loses game| Entering 20 coordinate guesses and not hitting 5 ships | ✓ Results in message telling user they lost game and they have 0 turns left |
 |Start game function when user wins game | Entering coordinates and hitting all 5 ships before turns left = 0 | ✓ Results in message congratulating user and telling them they hit all 5 ships and have won the game.| 
-| Testing codes format | PEP8 linter / running "black run.py" and "pycodestyle" | No major issues. Some code lines are longer than 80 characters but cannot be shorted otherwise it compromises the codes functionality|
+| Testing codes format | PEP8 linter / running "pycodestyle" and "pylint" on the run.py file | No error on the run.py file. Only a some suggestions on using f-strings and unnecessary use of elif. Pylint rated code 9.67/10 |
 | Testing the game format on the Heroku terminal | Deploying battleships game on Heroku terminal | ✓ The game work and can be played on this platform with no errors|
-
 
 
 ### Bugs
@@ -93,6 +104,7 @@ The class "BoardStates" is used which contains enumerations for the different st
 #### Resolved Bugs
 - Forgot the rows were indexed so kept getting errors that it was out of range, I needed to decrease the range for BOARD_GRID_SIZE to (BOARD_GRID_SIZE -1).
 - Selecting the same coordinates kept increasing the user score and decreasing turns left. I added extra if/else-if statements to the state_game function that prompted the user to input a row or column number they haven't picked before if they hit a "-" or "x" on the board.
+- User could select the same ships coordinates multiple times and the user score would increase. So I fixed his by making the boardstate different for ships that haven't been hit "X" compared to ships that have been hit "x".
 
 #### Unresolved Bugs
 - Label the rows of the grid by spelling "row" vertically next to the row numbers. Tried using "print("%s |%d |%s|" % (i, row_num, row_to_be_printed))" where "i" represented each letter in the string "row" but this just printed the table 6 times. So I have labelled the column but not the row.

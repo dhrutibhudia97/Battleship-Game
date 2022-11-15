@@ -3,15 +3,15 @@ The code for a 1 player game of battleships.
 
 The user has to guess the location of the 5 randomly placed ships on the 6x6
 game board. There are 4 different states the board can be in:
-  o = Empty space that hasn't been hit
+  o = Space that hasn't been hit
   x = Hit Ship
   - = You hit nothing
   X = Ships you missed
-Before the board is printed to 5 ships "X" on the board are replaced with
-"o" so the ships locations remain anomamous. The user choses the difficulty
+Before the board is printed to 5 ships "X" on the board is replaced with
+"o" so the ship's locations remain anonymous. The user chooses the difficulty
 level of the game which determines how many turns they get to guess the
-coordinates of the ship. If user inputs invalid row and column guesses they
-are prompted to guess again, with a message prompt to what was wrong with
+coordinates of the ship. If the user inputs invalid row and column guesses they
+are prompted to guess again, with a message prompting to what was wrong with
 their previous guess. The Game is won by the user finding all 5 ships before
 the turns run out.
 """
@@ -21,13 +21,13 @@ import enum
 
 # The width and height of the game board
 BOARD_GRID_SIZE = 6
-# The number of ships generated and places on the board
+# The number of ships generated and placed on the board
 NO_OF_SHIPS = 5
 
 # The symbol key to the game board
 GAME_LEGEND = """
 Symbol Key:
-  o = Empty space that hasn't been hit
+  o = Space that hasn't been hit
   x = Hit Ship
   - = You hit nothing
   X = Ships you missed
@@ -36,10 +36,10 @@ Symbol Key:
 
 class GameLevel(enum.Enum):
     """
-    The different game levels for user to pick from.
+    The different game levels for the user to pick from.
 
-    E for EASY where the user gets 25 turns. M for Medium where user
-    get 20 turns and H for Hard where user get 15 turns. Enum has been
+    E for EASY where the user gets 25 turns. M for Medium where the user
+    gets 20 turns and H for Hard where the user gets 15 turns. The Enum has been
     imported.
     """
 
@@ -50,10 +50,10 @@ class GameLevel(enum.Enum):
 
 class BoardStates(enum.Enum):
     """
-    The different states the user board can take depending on the outcome.
+    The different states the user board can take depend on the outcome.
 
     Enumerations are used for the different symbols printed which represent
-    different outputs on the game function. Enum has been imported.
+    different outputs on the game function. The Enum has been imported.
     """
 
     EMPTY = "o"
@@ -76,7 +76,7 @@ def print_game_board(user_name, game_board):
     The column is labelled. The BoardStates constant that is printed
     is "o" which represents empty unhit spaces. The 5 randomly
     generated ships that have the board state "X" are replaced
-    with "o" before the board is printed so the ships location is unknown
+    with "o" before the board is printed so the ship's location is unknown
     to the user. The two parameters for this function are the game_board
     and the user_name to allow the user name to display above the board when it
     is printed.
@@ -125,7 +125,7 @@ def generate_and_place_random_ships(game_board):
     Randomly generates 5 sets of ship coordinates to place on the board.
 
     The "randomint" function from the random library has been used.
-    The paramter being the game_board on which the ships are placed.
+    The parameter is the game_board on which the ships are placed.
     If the same coordinates are selected randomly more than once the
     function uses a while loop to generate coordinates again until
     they haven't been repeated. These random coordinates are then represented
@@ -189,10 +189,10 @@ def user_input():
 
 def get_game_level():
     """
-    Gives user a choice of playing a easy(E), medium(M) or hard(H) game.
+    Gives the user a choice of playing an easy(E), medium(M), or hard(H) game.
 
     This determines the number of turns the user gets in the game.
-    E = 25. M = 20. H = 15. The ships are in 5 of the possible of 36 locations
+    E = 25. M = 20. H = 15. The ships are in 5 of the possible 36 locations
     on the game grid.
     """
     game_level_choice = None
@@ -227,7 +227,7 @@ def start_game():
     """
 
     print("This is a game of Battleships\n")
-    # insert the users name to personalise the game board.
+    # insert the user's name to personalise the game board.
     user_name = input("Enter your name here: ")
     print(f"\nHi {user_name.capitalize()}, get ready to play BattleShips!\n")
 
@@ -246,7 +246,7 @@ def start_game():
         user_row, user_column = user_input()
         print("\n")
         # https://www.youtube.com/watch?v=tF1WRCrd_HQ - Time of video 19:55 -
-        # Youtube tutorial used to help with general format of if/else-if/else
+        # Youtube tutorial used to help with the general format of if/else-if/else
         # loop used to determine the game outcome.
         if USER_BOARD[user_row][user_column] == BoardStates.WRONG_GUESS.value:
             print("You have already guessed this coordinate. Guess again\n")
