@@ -162,3 +162,4 @@ https://battleship-game-db.herokuapp.com/
     - Mentor Sandeep Aggarwal
 - For converting input into integers.
     - https://pynative.com/python-check-user-input-is-number-or-string/#:~:text=To%20check%20if%20the%20input%20string%20is%20an%20integer%20number,using%20the%20int()%20constructor.&text=To%20check%20if%20the%20input%20is%20a%20float%20number%2C%20convert,using%20the%20float()%20constructor.
+- The file for the logic flow chart to plan the game functions uploaded on github.  
