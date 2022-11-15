@@ -82,7 +82,7 @@ def print_game_board(user_name, game_board):
     https://www.youtube.com/watch?v=tF1WRCrd_HQ - time of video:6:47 - This
     tutorial used to help number and label the column and row of the game board
     """
-
+    
     print(f"{user_name.title()}'s BOARD:\n")
     print("     column   ")
     print("   0 1 2 3 4 5")
@@ -134,7 +134,7 @@ def computers_ships(game_board):
     Youtube tutorial used to helpset up while loop to make sure random
     coordinates generated aren't the same.
     """
-    for battleship in range(NO_OF_SHIPS):
+    for _ in range(NO_OF_SHIPS):
         target_row = randint(0, BOARD_GRID_SIZE - 1)
         target_col = randint(0, BOARD_GRID_SIZE - 1)
         while game_board[target_row][target_col] == BoardStates.SHIP_ALIVE.value:
@@ -244,6 +244,7 @@ def start_game():
     
     user_score = 0
     turns_left = GameLevel[game_level].value
+    print(f"You have {turns_left} turns left\n")
 
     computers_ships(USER_BOARD)
     while turns_left > 0 or user_score < 5:
