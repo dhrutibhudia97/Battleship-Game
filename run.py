@@ -25,17 +25,23 @@ BOARD_GRID_SIZE = 6
 NO_OF_SHIPS = 5
 
 
-GAME_LEGEND = ("\nSymbol Key:\no = Empty space that hasn't been hit\nx = Hit Ship\n- = You hit nothing\nX = Ships you missed\n")
-
+GAME_LEGEND = """
+Symbol Key:
+  o = Empty space that hasn't been hit
+  x = Hit Ship
+  - = You hit nothing
+  X = Ships you missed
+"""
 
 
 class GameLevel(enum.Enum):
     """
-    The different game level for user to pick from. 
-    
+    The different game level for user to pick from.
+
     E for EASY where the user gets 25 turns. M for Medium where user
     get 20 turns and H for Hard where user get 15 turns.
     """
+
     E = 25
     M = 20
     H = 15
@@ -82,7 +88,7 @@ def print_game_board(user_name, game_board):
     https://www.youtube.com/watch?v=tF1WRCrd_HQ - time of video:6:47 - This
     tutorial used to help number and label the column and row of the game board
     """
-    
+
     print(f"{user_name.title()}'s BOARD:\n")
     print("     column   ")
     print("   0 1 2 3 4 5")
@@ -144,10 +150,6 @@ def computers_ships(game_board):
         game_board[target_row][target_col] = BoardStates.SHIP_ALIVE.value
 
 
-
-    
-
-
 def user_input():
     """
     The user inputs their guess for the row and column the ship is on.
@@ -203,7 +205,7 @@ def get_game_level():
     while True:
         print("Do you want to play an EASY(E), MEDIUM(M) or HARD(H) game?")
         game_level_choice = input("Enter either E | M | H: ").upper()
-        if game_level_choice not in ("E" , "M" , "H"):
+        if game_level_choice not in ("E", "M", "H"):
             print("\nPlease enter E or M or H to choice game level")
             continue
         else:
@@ -232,16 +234,16 @@ def start_game():
     tutorial used to help with general format of if/else-if/else loop used to
     determine the game outcome.
     """
-    
+
     print("This is a game of Battleships\n")
     # insert name to personalise user board name
     user_name = input("Enter your name here: ")
     print(f"\nHi {user_name.capitalize()}, get ready to play BattleShips!\n")
-    
+
     game_level = get_game_level()
 
     print(GAME_LEGEND)
-    
+
     user_score = 0
     turns_left = GameLevel[game_level].value
     print(f"You have {turns_left} turns left\n")
