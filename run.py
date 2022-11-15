@@ -1,30 +1,30 @@
 """
-Module doc string...
-"randint" is a function imported from the "random" library used to help
-generate 5 coordinates for the users ships.
-"enum" has been imported to the enumerations of the different board states.
-Class "BoardStates" contains the symbols printed on the board and what they
-mean in the game.
-The USER_BOARD constant contains the parameters of the user board on
-which the game occurs.
-"print_game_board" function prints the game board with updated boardstates
-everytime user inputs valid ship guess.
-"computer_ships" function randomly generated 5 coordinates that represent
-the computers ships in the users board.
-"user_input" function allows user to enter row and column number which it
-then checks is valid.
-"start_game" function then checks the users valid coordinates to see if hits
-or misses a ship or has been selected before.
+The code for a 1 player game of battleships.
 
+The user has to guess the location of the 5 randomly placed ships on the 6x6
+game board. There are 4 different states the board can be in:
+  o = Empty space that hasn't been hit
+  x = Hit Ship
+  - = You hit nothing
+  X = Ships you missed
+Before the board is printed to 5 ships "X" on the board are replaced with
+"o" so the ships locations remain anomamous. The user choses the difficulty
+level of the game which determines how many turns they get to guess the
+coordinates of the ship. If user inputs invalid row and column guesses they
+are prompted to guess again, with a message prompt to what was wrong with
+their previous guess. The Game is won by the user finding all 5 ships before
+the turns run out.
 """
 
 from random import randint
 import enum
 
+# The width and height of the game board
 BOARD_GRID_SIZE = 6
+# The number of ships generated and places on the board
 NO_OF_SHIPS = 5
 
-
+# The symbol key to the game board
 GAME_LEGEND = """
 Symbol Key:
   o = Empty space that hasn't been hit
@@ -36,7 +36,7 @@ Symbol Key:
 
 class GameLevel(enum.Enum):
     """
-    The different game level for user to pick from.
+    The different game levels for user to pick from.
 
     E for EASY where the user gets 25 turns. M for Medium where user
     get 20 turns and H for Hard where user get 15 turns.
@@ -50,16 +50,9 @@ class GameLevel(enum.Enum):
 class BoardStates(enum.Enum):
     """
     The different states the user board can take depending on the outcome.
-    Enumerations are used so the different symbols printed are different
-    outputs on the game function.
-    When the board is initially printed all of the coordinates will be printed
-    with "o" to represent empty spaces that haven't been hit. 5 of these
-    coordinates randomly selected by the computer_ships function will be "X"
-    that represent ships that haven't been hit, but before the board is printed
-    the "X" is replaced to "o" so the user doesn't know where they are.
-    Every time the user selects a coordinate and misses, the "o" changes to
-    "-". When they hit a ship the "o" changes to "x" to represent a hit ship.
-    Both result in number of turns left to decrease by 1.
+
+    Enumerations are used for the different symbols printed which represent
+    different outputs on the game function.
     """
 
     EMPTY = "o"
@@ -68,7 +61,7 @@ class BoardStates(enum.Enum):
     WRONG_GUESS = "-"
 
 
-# User board set up.
+# User board set up using BOARD_GRID_SIZE constant
 # All coordinates are represented with the Empty "o" BoardStates symbol.
 USER_BOARD = [
     [BoardStates.EMPTY.value] * BOARD_GRID_SIZE for x in range(BOARD_GRID_SIZE)
@@ -77,16 +70,15 @@ USER_BOARD = [
 
 def print_game_board(user_name, game_board):
     """
-    Prints user board with 6 rows and 6 columns.
+    Prints user board in terms of BOARD_GRID_SIZE constant.
+
     The column is labelled. The BoardStates constant that is printed
     is "o" which represents empty unhit spaces. The 5 randomly
     generated ships that have the board state "X" are replaced
-    with "o" before the board is printed so the user doesn't know where
-    the ships are. The two parameters for this function are the game_board
+    with "o" before the board is printed so the ships location is unknown
+    to the user. The two parameters for this function are the game_board
     and the user_name to allow the user name to display above the board when it
     is printed.
-    https://www.youtube.com/watch?v=tF1WRCrd_HQ - time of video:6:47 - This
-    tutorial used to help number and label the column and row of the game board
     """
 
     print(f"{user_name.title()}'s BOARD:\n")
@@ -94,18 +86,16 @@ def print_game_board(user_name, game_board):
     print("   0 1 2 3 4 5")
     print("---------------")
     row_num = 0
-
+    # https://www.youtube.com/watch?v=tF1WRCrd_HQ - time of video- 6:47
+    # Tutorial used to help number and label the column and row of the
+    # game board
     for row in game_board:
-        # str = " row  "
-        # for i in str:
         row_to_be_printed = "|".join(row).replace(
             BoardStates.SHIP_ALIVE.value, BoardStates.EMPTY.value
         )
-        # print("%s |%d |%s|" % (i, row_num, row_to_be_printed))
+
         print("%d |%s|" % (row_num, row_to_be_printed))
         row_num += 1
-        # if row_num = (BOARD_GRID_SIZE - 1):
-        #    break
 
 
 def print_final_game_board(user_name, game_board):
