@@ -1,6 +1,5 @@
 """
 Module doc string...
-
 "randint" is a function imported from the "random" library used to help
 generate 5 coordinates for the users ships.
 "enum" has been imported to the enumerations of the different board states.
@@ -16,6 +15,7 @@ the computers ships in the users board.
 then checks is valid.
 "start_game" function then checks the users valid coordinates to see if hits
 or misses a ship or has been selected before.
+
 """
 
 from random import randint
@@ -23,6 +23,10 @@ import enum
 
 BOARD_GRID_SIZE = 6
 NO_OF_SHIPS = 5
+
+
+GAME_LEGEND = ("\nSymbol Key:\no = Empty space that hasn't been hit\nx = Hit Ship\n- = You hit nothing\nX = Ships you missed\n")
+
 
 
 class GameLevel(enum.Enum):
@@ -40,7 +44,6 @@ class GameLevel(enum.Enum):
 class BoardStates(enum.Enum):
     """
     The different states the user board can take depending on the outcome.
-
     Enumerations are used so the different symbols printed are different
     outputs on the game function.
     When the board is initially printed all of the coordinates will be printed
@@ -69,7 +72,6 @@ USER_BOARD = [
 def print_game_board(user_name, game_board):
     """
     Prints user board with 6 rows and 6 columns.
-
     The column is labelled. The BoardStates constant that is printed
     is "o" which represents empty unhit spaces. The 5 randomly
     generated ships that have the board state "X" are replaced
@@ -103,7 +105,6 @@ def print_game_board(user_name, game_board):
 def print_final_game_board(user_name, game_board):
     """
     This function is printed when the game ends.
-
     If the user loses it will reveal the positions of the ships they
     didn't hit with the updated key also printed so users know what
     "X" stands for. If the user wins all 5 ships will be represented
@@ -125,12 +126,10 @@ def computers_ships(game_board):
     """
     Randomly generates 5 sets of ship coordinates to place on the board
     using the "randomint" function for the random library.
-
     If the same coordinates are selected randomly more than once the
     function uses a while loop to generate coordinates again until
     they haven't been repeated. These random coordinates are then represented
     on the game board using the BoardState enumeration for SHIP_ALIVE "X".
-
     https://www.youtube.com/watch?v=tF1WRCrd_HQ - time of video 11:10 -
     Youtube tutorial used to helpset up while loop to make sure random
     coordinates generated aren't the same.
@@ -152,7 +151,6 @@ def computers_ships(game_board):
 def user_input():
     """
     The user inputs their guess for the row and column the ship is on.
-
     Validity checker for user input using Try/Except loop to check if the data
     input was an integer or if any input was given, or if the input was a
     string. An if/else if/else loop then checks if the integer input was in
@@ -193,13 +191,33 @@ def user_input():
     return int(user_guess_row), int(user_guess_column)
 
 
+def get_game_level():
+    """
+    Gives user a choice of easy(E), medium(M) or hard(H) to determine the amount of
+    turns they get.
+
+    E = 25. M = 20. H = 15. The ships are in 5 of the possible of 36 locations on
+    the game grid with is (6x6).
+    """
+    game_level_choice = None
+    while True:
+        print("Do you want to play an EASY(E), MEDIUM(M) or HARD(H) game?")
+        game_level_choice = input("Enter either E | M | H: ").upper()
+        if game_level_choice not in ("E" , "M" , "H"):
+            print("\nPlease enter E or M or H to choice game level")
+            continue
+        else:
+            break
+
+    return game_level_choice
+
+
 def start_game():
     """
     The game function only runs if there are turns left or the user score
     hasn't reached 5. When either the number of turns left is 0 or the
     user score is 5 the start_game function doesn't run. The game is over
     and the final game board is printed.
-
     Checks if the user input from the user input function misses or hits the
     ships by matching it to the BoardStates constants, if the coordinate hits
     an "o" it means they missed the ship and that coordinate is replaced with
@@ -210,7 +228,6 @@ def start_game():
     they have hit this before so their turns left don't decrease. Contains
     input for user to insert their name to personalise the board when it is
     printed.
-
     https://www.youtube.com/watch?v=tF1WRCrd_HQ - Time of video 19:55 - Youtube
     tutorial used to help with general format of if/else-if/else loop used to
     determine the game outcome.
@@ -221,32 +238,12 @@ def start_game():
     user_name = input("Enter your name here: ")
     print(f"\nHi {user_name.capitalize()}, get ready to play BattleShips!\n")
     
+    game_level = get_game_level()
 
-    def game_level():
-        """
-        Gives user a choice of easy(E), medium(M) or hard(H) to determine the amount of
-        turns they get.
+    print(GAME_LEGEND)
     
-        E = 25. M = 20. H = 15. The ships are in 5 of the possible of 36 locations on
-        the game grid with is (6x6).
-        """
-        while True:
-            print("Do you want to play an EASY(E), MEDIUM(M) or HARD(H) game?")
-            game_level_choice = input("Enter either E | M | H: ").upper()
-            if game_level_choice != "E" or "M" or "H":
-                print("\nPlease enter E or M or H to choice game level")
-                continue
-                game_level_choice = input("Enter either E | M | H: ").upper()
-            else:
-                break
-            game_level_choice = game_level
-
-    print("Symbol key:\no = Empty space that hasn't been hit")
-    print("x = Hit Ship")
-    print("- = You hit nothing \n")
-
     user_score = 0
-    turns_left = int((GameLevel.game_level.value))
+    turns_left = GameLevel[game_level].value
 
     computers_ships(USER_BOARD)
     while turns_left > 0 or user_score < 5:
@@ -284,10 +281,7 @@ def start_game():
         print(f"You have {turns_left} turns left\n")
         if turns_left == 0:
             print("No more turns left! GAME OVER\n")
-            print("Symbol Key:\no = Empty space that hasn't been hit")
-            print("x = Hit Ship")
-            print("- = You hit nothing")
-            print("X = Ships you missed\n")
+            print(GAME_LEGEND)
             print(f"You Hit {user_score}/5 Battleships\n")
             print_final_game_board(user_name, USER_BOARD)
             break
