@@ -24,6 +24,17 @@ import enum
 BOARD_GRID_SIZE = 6
 NO_OF_SHIPS = 5
 
+class GameLevel(enum.Enum):
+    """
+    The different game level for user to pick from. 
+    
+    E for EASY where the user gets 25 turns. M for Medium where user
+    get 20 turns and H for Hard where user get 15 turns.
+    """
+    E = 25
+    M = 20
+    H = 15
+
 
 class BoardStates(enum.Enum):
     """
@@ -133,6 +144,16 @@ def computers_ships(game_board):
         game_board[target_row][target_col] = BoardStates.SHIP_ALIVE.value
 
 
+def game_level():
+    """
+    Gives user a choice of easy(E), medium(M) or hard(H) to determine the amount of
+    turns they get.
+    
+    E = 25. M = 20. H = 15. The ships are in 5 of the possible of
+    36 locations on the game grid with is (6x6).
+    """
+
+
 def user_input():
     """
     The user inputs their guess for the row and column the ship is on.
@@ -199,15 +220,25 @@ def start_game():
     tutorial used to help with general format of if/else-if/else loop used to
     determine the game outcome.
     """
-    user_score = 0
-    turns_left = 20
+    
     print("This is a game of Battleships\n")
     # insert name to personalise user board name
     user_name = input("Enter your name here: ")
-    print(f"\nHi {user_name}, get ready to play BattleShips!\n")
+    print(f"\nHi {user_name.capitalize()}, get ready to play BattleShips!\n")
+    print("Do you want to play an EASY(E), MEDIUM(M) or HARD(H) game?")
+    game_level_choice = input("Enter either E | M | H: ").upper()
+    while game_level_choice != "E" or "M" or "H":
+        print("\nPlease enter E or M or H to choice game level")
+        else:
+            break
+        game_level_choice = input("Enter either E | M | H: ").upper()
+        game_level_choice = game_level
     print("Symbol key:\no = Empty space that hasn't been hit")
     print("x = Hit Ship")
     print("- = You hit nothing \n")
+
+    user_score = 0
+    turns_left = int((GameLevel.game_level.value))
 
     computers_ships(USER_BOARD)
     while turns_left > 0 or user_score < 5:
@@ -248,7 +279,8 @@ def start_game():
             print("Symbol Key:\no = Empty space that hasn't been hit")
             print("x = Hit Ship")
             print("- = You hit nothing")
-            print("X = Ships you missed")
+            print("X = Ships you missed\n")
+            print(f"You Hit {user_score}/5 Battleships\n")
             print_final_game_board(user_name, USER_BOARD)
             break
 
