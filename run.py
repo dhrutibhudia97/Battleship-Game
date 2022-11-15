@@ -39,8 +39,8 @@ class GameLevel(enum.Enum):
     The different game levels for the user to pick from.
 
     E for EASY where the user gets 25 turns. M for Medium where the user
-    gets 20 turns and H for Hard where the user gets 15 turns. The Enum has been
-    imported.
+    gets 20 turns and H for Hard where the user gets 15 turns. The Enum has
+    been imported.
     """
 
     E = 25
@@ -246,8 +246,8 @@ def start_game():
         user_row, user_column = user_input()
         print("\n")
         # https://www.youtube.com/watch?v=tF1WRCrd_HQ - Time of video 19:55 -
-        # Youtube tutorial used to help with the general format of if/else-if/else
-        # loop used to determine the game outcome.
+        # Youtube tutorial used to help with the general format of
+        # if/else-if/else loop used to determine the game outcome.
         if USER_BOARD[user_row][user_column] == BoardStates.WRONG_GUESS.value:
             print("You have already guessed this coordinate. Guess again\n")
         elif USER_BOARD[user_row][user_column] == BoardStates.SHIP_HIT.value:
