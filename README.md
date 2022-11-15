@@ -8,7 +8,7 @@ or hard. This determines how many turns they get: easy - 25, medium - 20, and ha
 The board grid size is (6x6), 36 spaces and each of the 5 battleships takes up 1 space.
 The purpose of this game is to entertain the user with no prior knowledge needed as the outcome of the game is based on luck. It is easy for anyone to play, no other player is needed and they just need to guess a row and column number. They have to guess where the 5 ships are before their turns run out. The target audience is anyone who wants to play a small game on the computer by themselves.
 
-![python responsive screen design](https://user-images.githubusercontent.com/107180641/201770085-acfe3871-bb03-4f19-a97a-7cf4ee732a7e.png)
+![python responsive screen design](https://user-images.githubusercontent.com/107180641/202027634-12ee1d6e-e589-439e-938c-09522f8784db.png)
 
 
 ## The Rules Of The Game
@@ -28,22 +28,30 @@ The different symbols on the board represent the different states the locations 
 
 ### Existing Feature
 
+#### Inserting user name
+- The user inserts their name which is then used to name the game board.
+
+![insert user name](https://user-images.githubusercontent.com/107180641/202028072-2c106186-65e5-4c2b-8b53-c2cf17f0cdc6.png)
+
 #### Game difficulty choice
 - The user gets the choice at the beginning of the game Easy/Medium/Hard. This
 determines how many turns they get to guess the location of the ships.
 
-[insert screen shot of intro question]
+![game difficulty choice](https://user-images.githubusercontent.com/107180641/202028254-5a9a71e2-ccd0-4d12-af5c-07fe512960c5.png)
 
 #### Random Coordinate Generator
 - The computer generates 5 random coordinates to place ships on the game board using the random library that has been imported.
 - The user cannot see where the ships have been placed as the symbols for the ships have been replaced with the symbol for empty before the board is printed.
 
-[insert screenshot of board before input given]
+![first board printed](https://user-images.githubusercontent.com/107180641/202028444-06b3f975-eaa1-47a1-b541-5f771d2865d7.png)
 
 #### The User Input Validator 
 - The row and column number input is checked to see if any data has been inputted, then checking to see if it is an integer. If it isn't an integer then the user is asked to input the row or column number again.
 - If it is an integer it is checked to see if it is a positive number and if it is smaller than the board grid size. If it isn't the user is asked to input the row or column number again.
-[insert screenshot of entering nothing/float/string/negative integer and too big an integer]
+
+![incorrect user input](https://user-images.githubusercontent.com/107180641/202028730-8056180b-66e7-4023-b91f-67161d5c9f62.png)
+
+![correct user input](https://user-images.githubusercontent.com/107180641/202028942-b90f9a82-9c8a-4217-a4e6-ebc2df04bf3b.png)
 
 #### The Game Function Validator
 - User inserts name which will be printed on top of the game board for each round.
@@ -51,18 +59,26 @@ determines how many turns they get to guess the location of the ships.
 - If the coordinate hasn't been entered before, it is checked to see if it hits or misses a ship, deducting 1 from turns left and adding 1 to the user score accordingly.
 - The game function stops running when either there are 0 turns left or the user score is 5. The last game is printed and the game ends.
 
-[insert screenshot or a hit]
-[miss ship ]
-[already hit ship]
-[already missed location.]
-[insert screenshot of either hitting all ships and winning the game]
-[losing game by not hitting all ships.]
+Hitting a ship.
+
+![hit ship](https://user-images.githubusercontent.com/107180641/202029338-bf6d9cb9-a0b0-444e-8089-41d79a94c88f.png)
+
+Selecting same wrong guess again.
+
+![already missed](https://user-images.githubusercontent.com/107180641/202029192-14c2527a-0802-4b07-ba9c-bba5e32650c1.png)
+
+Selecting same hit ship again.
+
+![already hit ship](https://user-images.githubusercontent.com/107180641/202029491-0f84a030-db7b-468b-9350-2a22b3f6b138.png)
+
 
 #### Game board saves previous coordinates from each round
 - All positions that have been chosen on the board get turned to "x" or "-" so in the game function the same coordinates can't be entered multiple times.
 
 #### Printing final board
 - This prints board at the end of the game. It shows the location of all the un-hit ships represented with "X" if the user loses the game. If the user wins, the board with show all 5 hit ships represented with "x"
+
+![game over board](https://user-images.githubusercontent.com/107180641/202029863-58b976fa-6e2c-47fe-a28f-a717d88795c5.png)
 
  
 ### Future Features
@@ -76,15 +92,8 @@ The class "BoardStates" is used which contains enumerations for the different st
 
 
 ## Testing
-- I have manually checked that the user's inputs are valid before the game function runs. When the user's row or column input is: blank, a string, float, a negative integer, or an integer bigger than 5 the user is prompted to enter another input.
-- I have tested that the user's inputs in the game function affect the user's score and the number of turns left correctly. If the same coordinate is selected this has no effect on the turns left or the user score.
 
-- Test game outputs on Heroku terminal... i.e game stops if no turns left or 5 is scored...######
-- - PEP8 linter ####
-
-
-## Testing Features
-|Feature being tested                | How it was manually tested           | Results                     |
+|Features being tested                | How it was manually tested           | Results                     |
 |------------------------------------|--------------------------------------|-----------------------------|
 |User validation function excepting incorrect input type| Entered nothing, string and floats   | ✓ User asked to enter an integer|
 |User validation function excepting number in the board size range | Entering negative integers and integers > 5 | ✓ Message printed to tell the user they cannot enter negative values or numbers bigger than the board size |
@@ -94,6 +103,10 @@ The class "BoardStates" is used which contains enumerations for the different st
 |Start game function when the user wins the game | Entering coordinates and hitting all 5 ships before the turns left = 0 | ✓ Results in a message congratulating the user and telling them they hit all 5 ships and have won the game.| 
 | Testing codes format | PEP8 linter / running "pycodestyle" and "pylint" on the run.py file | No error on the run.py file. Only some suggestions on using f-strings and unnecessary use of elif. Pylint rated code 9.67/10 |
 | Testing the game format on the Heroku terminal | Deploying battleships game on Heroku terminal | ✓ The game work and can be played on this platform with no errors|
+
+Pylint results.
+
+![pylint results](https://user-images.githubusercontent.com/107180641/202031010-3f96d86c-c41f-4ae5-9117-cbcb148a0d37.png)
 
 
 ### Bugs
@@ -127,14 +140,12 @@ Make the game 2-player and add a computer board that allows the computer to gues
 Link to live version of this project on the Heroku app: 
 https://battleship-game-db.herokuapp.com/
 
-### Steps for cloning branch
+### Steps for cloning branch:
 1) On GitHub, on the top right click "Code"
 2) Click "local" tab
 3) Copy the URL
 4) Where you want to clone the file, use command "git clone" and pass through the URL
 5) Complete code should now be available on your local system for you to edit 
-
-
 
 
 ## Credits
