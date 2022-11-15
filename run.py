@@ -143,7 +143,9 @@ def computers_ships(game_board):
     for _ in range(NO_OF_SHIPS):
         target_row = randint(0, BOARD_GRID_SIZE - 1)
         target_col = randint(0, BOARD_GRID_SIZE - 1)
-        while game_board[target_row][target_col] == BoardStates.SHIP_ALIVE.value:
+        while (
+            game_board[target_row][target_col] == BoardStates.SHIP_ALIVE.value
+        ):
             target_row = randint(0, BOARD_GRID_SIZE - 1)
             target_col = randint(0, BOARD_GRID_SIZE - 1)
 
@@ -161,14 +163,14 @@ def user_input():
     """
     while True:
         try:
-            user_guess_row = int(input("\nEnter your row here: \n"))
+            user_row = int(input("\nEnter your row here: \n"))
         except ValueError:
             print("Make sure you ENTER a row number that is an INTEGER!")
             continue
-        if user_guess_row < 0:
+        if user_row < 0:
             print("Your row number CAN'T BE A NEGATIVE NUMBER!")
             continue
-        elif user_guess_row > (BOARD_GRID_SIZE - 1):
+        elif user_row > (BOARD_GRID_SIZE - 1):
             print("Your row number CAN'T BE BIGGER THAN THE GRID SIZE!")
             continue
         else:
@@ -176,20 +178,20 @@ def user_input():
 
     while True:
         try:
-            user_guess_column = int(input("Enter your column here: \n"))
+            user_column = int(input("Enter your column here: \n"))
         except ValueError:
             print("Make sure you enter a column number that is an INTEGER!\n")
             continue
-        if user_guess_column < 0:
+        if user_column < 0:
             print("Your column number CAN'T BE A NEGATIVE NUMBER!\n")
             continue
-        if user_guess_column > (BOARD_GRID_SIZE - 1):
+        if user_column > (BOARD_GRID_SIZE - 1):
             print("Your column number CAN'T BE BIGGER THAN THE GRID SIZE!\n")
             continue
         break
 
-    print(f"Your coordinate: [{user_guess_column} , {user_guess_row}]")
-    return int(user_guess_row), int(user_guess_column)
+    print(f"Your coordinate: [{user_column} , {user_row}]")
+    return int(user_row), int(user_column)
 
 
 def get_game_level():
@@ -251,33 +253,30 @@ def start_game():
 
     while turns_left > 0 or user_score < 5:
         print_game_board(user_name, USER_BOARD)
-        user_guess_row, user_guess_column = user_input()
-        # USER_BOARD[user_guess_row][user_guess_column] = user_guess()
+        user_row, user_column = user_input()
+        # USER_BOARD[user_row][user_column] = user_guess()
         print("\n")
         if (
-            USER_BOARD[user_guess_row][user_guess_column]
+            USER_BOARD[user_row][user_column]
             == BoardStates.WRONG_GUESS.value
         ):
             print("You have already guessed this coordinate. Guess again\n")
         elif (
-            USER_BOARD[user_guess_row][user_guess_column]
-            == BoardStates.SHIP_HIT.value
+            USER_BOARD[user_row][user_column] == BoardStates.SHIP_HIT.value
         ):
             print("You have already hit this ship!\n")
         elif (
-            USER_BOARD[user_guess_row][user_guess_column]
+            USER_BOARD[user_row][user_column]
             == BoardStates.SHIP_ALIVE.value
         ):
             print("YAY, you hit a ship!\n")
-            USER_BOARD[user_guess_row][
-                user_guess_column
-            ] = BoardStates.SHIP_HIT.value
+            USER_BOARD[user_row][user_column] = BoardStates.SHIP_HIT.value
             turns_left -= 1
             user_score += 1
         else:
             print("AWW! you missed\n")
-            USER_BOARD[user_guess_row][
-                user_guess_column
+            USER_BOARD[user_row][
+                user_column
             ] = BoardStates.WRONG_GUESS.value
             turns_left -= 1
         if user_score == 5:
