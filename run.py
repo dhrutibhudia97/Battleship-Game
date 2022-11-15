@@ -39,7 +39,8 @@ class GameLevel(enum.Enum):
     The different game levels for user to pick from.
 
     E for EASY where the user gets 25 turns. M for Medium where user
-    get 20 turns and H for Hard where user get 15 turns.
+    get 20 turns and H for Hard where user get 15 turns. Enum has been
+    imported.
     """
 
     E = 25
@@ -52,7 +53,7 @@ class BoardStates(enum.Enum):
     The different states the user board can take depending on the outcome.
 
     Enumerations are used for the different symbols printed which represent
-    different outputs on the game function.
+    different outputs on the game function. Enum has been imported.
     """
 
     EMPTY = "o"
@@ -101,10 +102,11 @@ def print_game_board(user_name, game_board):
 def print_final_game_board(user_name, game_board):
     """
     This function is printed when the game ends.
+
     If the user loses it will reveal the positions of the ships they
-    didn't hit with the updated key also printed so users know what
-    "X" stands for. If the user wins all 5 ships will be represented
-    with "x" as they hit all 5 ships.
+    didn't hit. If the user wins all 5 ships will be represented
+    with "x" as they hit all 5 ships. The parameters are the game board
+    and the user name which is printed above the board.
     """
     print(f"{user_name.title()}'s FINAL BOARD:\n")
     print("     column   ")
@@ -120,19 +122,21 @@ def print_final_game_board(user_name, game_board):
 
 def generate_and_place_random_ships(game_board):
     """
-    Randomly generates 5 sets of ship coordinates to place on the board
-    using the "randomint" function for the random library.
+    Randomly generates 5 sets of ship coordinates to place on the board.
+
+    The "randomint" function from the random library has been used.
+    The paramter being the game_board on which the ships are placed.
     If the same coordinates are selected randomly more than once the
     function uses a while loop to generate coordinates again until
     they haven't been repeated. These random coordinates are then represented
     on the game board using the BoardState enumeration for SHIP_ALIVE "X".
-    https://www.youtube.com/watch?v=tF1WRCrd_HQ - time of video 11:10 -
-    Youtube tutorial used to helpset up while loop to make sure random
-    coordinates generated aren't the same.
     """
     for _ in range(NO_OF_SHIPS):
         ship_row = randint(0, BOARD_GRID_SIZE - 1)
         ship_col = randint(0, BOARD_GRID_SIZE - 1)
+        # https://www.youtube.com/watch?v=tF1WRCrd_HQ - time of video 11:10 -
+        # Youtube tutorial used to help set up while loop to make sure random
+        # coordinates generated aren't the same.
         while game_board[ship_row][ship_col] == BoardStates.SHIP_ALIVE.value:
             ship_row = randint(0, BOARD_GRID_SIZE - 1)
             ship_col = randint(0, BOARD_GRID_SIZE - 1)
@@ -143,11 +147,12 @@ def generate_and_place_random_ships(game_board):
 def user_input():
     """
     The user inputs their guess for the row and column the ship is on.
+
     Validity checker for user input using Try/Except loop to check if the data
     input was an integer or if any input was given, or if the input was a
-    string. An if/else if/else loop then checks if the integer input was in
-    the correct range. If integer input is in the correct range it breaks out
-    of the loop.
+    string. An if/else loop then checks if the integer input was in
+    the correct range. If integer input is in the correct range it is then
+    inserted into the start_game function.
     """
     while True:
         try:
@@ -184,11 +189,11 @@ def user_input():
 
 def get_game_level():
     """
-    Gives user a choice of easy(E), medium(M) or hard(H) to determine the
-    amount of turns they get.
+    Gives user a choice of playing a easy(E), medium(M) or hard(H) game.
 
+    This determines the number of turns the user gets in the game.
     E = 25. M = 20. H = 15. The ships are in 5 of the possible of 36 locations
-    on the game grid with is (6x6).
+    on the game grid.
     """
     game_level_choice = None
     while True:
@@ -205,27 +210,24 @@ def get_game_level():
 
 def start_game():
     """
-    The game function only runs if there are turns left or the user score
-    hasn't reached 5. When either the number of turns left is 0 or the
-    user score is 5 the start_game function doesn't run. The game is over
-    and the final game board is printed.
-    Checks if the user input from the user input function misses or hits the
-    ships by matching it to the BoardStates constants, if the coordinate hits
-    an "o" it means they missed the ship and that coordinate is replaced with
-    "-" to represent a wrong guess and turns left decreases by 1. If the
-    coordinate hits an "X" means they have hit a ship and this gets replaced
-    with an "x" to represent a hit ship, turns left decrease by 1, and the
-    user score increases by 1. If the coordinate hits a "-" or "x" it means
-    they have hit this before so their turns left don't decrease. Contains
-    input for user to insert their name to personalise the board when it is
-    printed.
-    https://www.youtube.com/watch?v=tF1WRCrd_HQ - Time of video 19:55 - Youtube
-    tutorial used to help with general format of if/else-if/else loop used to
-    determine the game outcome.
+    The start game function only runs if there are turns left or hasn't won.
+
+    When either the number of turns left is 0 or the user score is 5 the
+    start_game function doesn't run. The game is over and the final game board
+    is printed. Checks if the user input from the user input function misses
+    or hits the ships by matching it to the BoardStates constants, if the
+    coordinate hits an "o" it means they missed the ship and that coordinate
+    is replaced with "-" to represent a wrong guess and turns left decreases by
+    1. If the coordinate hits an "X" means they have hit a ship and this gets
+    replaced with an "x" to represent a hit ship, turns left decrease by 1, and
+    the user score increases by 1. If the coordinate hits a "-" or "x" it
+    means they have hit this before so their turns left don't decrease.
+    Contains input for user to insert their name to personalise the board when
+    it is printed.
     """
 
     print("This is a game of Battleships\n")
-    # insert name to personalise user board name
+    # insert the users name to personalise the game board.
     user_name = input("Enter your name here: ")
     print(f"\nHi {user_name.capitalize()}, get ready to play BattleShips!\n")
 
@@ -242,8 +244,10 @@ def start_game():
     while turns_left > 0 or user_score < 5:
         print_game_board(user_name, USER_BOARD)
         user_row, user_column = user_input()
-        # USER_BOARD[user_row][user_column] = user_guess()
         print("\n")
+        # https://www.youtube.com/watch?v=tF1WRCrd_HQ - Time of video 19:55 -
+        # Youtube tutorial used to help with general format of if/else-if/else
+        # loop used to determine the game outcome.
         if USER_BOARD[user_row][user_column] == BoardStates.WRONG_GUESS.value:
             print("You have already guessed this coordinate. Guess again\n")
         elif USER_BOARD[user_row][user_column] == BoardStates.SHIP_HIT.value:
@@ -271,6 +275,6 @@ def start_game():
             break
 
 
+# Allows start_game function to run on a global scope
 if __name__ == "__main__":
-    # Allows start_game function to run on a global scope.
     start_game()
