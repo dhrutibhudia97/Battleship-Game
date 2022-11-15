@@ -74,6 +74,20 @@ The class "BoardStates" is used which contains enumerations for the different st
 - - PEP8 linter ####
 
 
+## Testing Features
+|Feature being tested                | How it was manually tested           | Results                     |
+|------------------------------------|--------------------------------------|-----------------------------|
+|User validation function excepting incorrect input type| Entered nothing, string and floats   | ✓ User asked to enter an integer|
+|User validation function excepting number in in the board size range | Entering negative integers and integers > 5 | ✓ Message printed to tell user they cannot enter negative values or numbers bigger then the board size |
+| Start game function not decreasing turns left if the same wrong guess coordinate has been selected| Entering the same coordinates for a missed guess| ✓ Message printed telling user they have already guessed that coordinate and to try again|
+| Start game function not increasing user score multiple times if same ship is hit| Entering same coordinates for a known ship location| ✓ Message shows telling user they have already hit this ship and to guess again. User score does not increase and the number of turns left does not decrease| 
+|Start game function when user loses game| Entering 20 coordinate guesses and not hitting 5 ships | ✓ Results in message telling user they lost game and they have 0 turns left |
+|Start game function when user wins game | Entering coordinates and hitting all 5 ships before turns left = 0 | ✓ Results in message congratulating user and telling them they hit all 5 ships and have won the game.| 
+| Testing codes format | PEP8 linter / running "black run.py" and "pycodestyle" | No major issues. Some code lines are longer than 80 characters but cannot be shorted otherwise it compromises the codes functionality|
+| Testing the game format on the Heroku terminal | Deploying battleships game on Heroku terminal | ✓ The game work and can be played on this platform with no errors|
+
+
+
 ### Bugs
 
 #### Resolved Bugs
