@@ -128,7 +128,7 @@ def print_final_game_board(user_name, game_board):
         row_num += 1
 
 
-def computers_ships(game_board):
+def generate_and_place_random_ships(game_board):
     """
     Randomly generates 5 sets of ship coordinates to place on the board
     using the "randomint" function for the random library.
@@ -143,9 +143,7 @@ def computers_ships(game_board):
     for _ in range(NO_OF_SHIPS):
         target_row = randint(0, BOARD_GRID_SIZE - 1)
         target_col = randint(0, BOARD_GRID_SIZE - 1)
-        while (
-            game_board[target_row][target_col] == BoardStates.SHIP_ALIVE.value
-        ):
+        while game_board[target_row][target_col] == BoardStates.SHIP_ALIVE.value:
             target_row = randint(0, BOARD_GRID_SIZE - 1)
             target_col = randint(0, BOARD_GRID_SIZE - 1)
 
@@ -249,35 +247,25 @@ def start_game():
     turns_left = GameLevel[game_level].value
     print(f"You have {turns_left} turns left\n")
 
-    computers_ships(USER_BOARD)
+    generate_and_place_random_ships(USER_BOARD)
 
     while turns_left > 0 or user_score < 5:
         print_game_board(user_name, USER_BOARD)
         user_row, user_column = user_input()
         # USER_BOARD[user_row][user_column] = user_guess()
         print("\n")
-        if (
-            USER_BOARD[user_row][user_column]
-            == BoardStates.WRONG_GUESS.value
-        ):
+        if USER_BOARD[user_row][user_column] == BoardStates.WRONG_GUESS.value:
             print("You have already guessed this coordinate. Guess again\n")
-        elif (
-            USER_BOARD[user_row][user_column] == BoardStates.SHIP_HIT.value
-        ):
+        elif USER_BOARD[user_row][user_column] == BoardStates.SHIP_HIT.value:
             print("You have already hit this ship!\n")
-        elif (
-            USER_BOARD[user_row][user_column]
-            == BoardStates.SHIP_ALIVE.value
-        ):
+        elif USER_BOARD[user_row][user_column] == BoardStates.SHIP_ALIVE.value:
             print("YAY, you hit a ship!\n")
             USER_BOARD[user_row][user_column] = BoardStates.SHIP_HIT.value
             turns_left -= 1
             user_score += 1
         else:
             print("AWW! you missed\n")
-            USER_BOARD[user_row][
-                user_column
-            ] = BoardStates.WRONG_GUESS.value
+            USER_BOARD[user_row][user_column] = BoardStates.WRONG_GUESS.value
             turns_left -= 1
         if user_score == 5:
             print("Congrats! you sunk all 5 ships and have won the game!\n")
