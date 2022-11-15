@@ -88,6 +88,27 @@ def print_game_board(user_name, game_board):
         #    break
 
 
+def print_final_game_board(user_name, game_board):
+    """
+    This function is printed when the game ends.
+
+    If the user loses it will reveal the positions of the ships they
+    didn't hit with the updated key also printed so users know what
+    "X" stands for. If the user wins all 5 ships will be represented
+    with "x" as they hit all 5 ships.
+    """
+    print(f"{user_name.title()}'s FINAL BOARD:\n")
+    print("     column   ")
+    print("   0 1 2 3 4 5")
+    print("---------------")
+    row_num = 0
+
+    for row in game_board:
+        row_to_be_printed = "|".join(row)
+        print("%d |%s|" % (row_num, row_to_be_printed))
+        row_num += 1
+
+
 def computers_ships(game_board):
     """
     Randomly generates 5 sets of ship coordinates to place on the board
@@ -102,7 +123,7 @@ def computers_ships(game_board):
     Youtube tutorial used to helpset up while loop to make sure random
     coordinates generated aren't the same.
     """
-    for target in range(NO_OF_SHIPS):
+    for battleship in range(NO_OF_SHIPS):
         target_row = randint(0, BOARD_GRID_SIZE - 1)
         target_col = randint(0, BOARD_GRID_SIZE - 1)
         while game_board[target_row][target_col] == BoardStates.SHIP_ALIVE.value:
@@ -186,7 +207,7 @@ def start_game():
     print(f"\nHi {user_name}, get ready to play BattleShips!\n")
     print("Symbol key:\no = Empty space that hasn't been hit")
     print("x = Hit Ship")
-    print("- = Missed Ship \n")
+    print("- = You hit nothing \n")
 
     computers_ships(USER_BOARD)
     while turns_left > 0 or user_score < 5:
@@ -224,7 +245,11 @@ def start_game():
         print(f"You have {turns_left} turns left\n")
         if turns_left == 0:
             print("No more turns left! GAME OVER\n")
-            print_game_board(user_name, USER_BOARD)
+            print("Symbol Key:\no = Empty space that hasn't been hit")
+            print("x = Hit Ship")
+            print("- = You hit nothing")
+            print("X = Ships you missed")
+            print_final_game_board(user_name, USER_BOARD)
             break
 
 
