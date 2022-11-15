@@ -124,6 +124,7 @@ Make the game 2-player and add a computer board that allows the computer to gues
 4) Linked the Heruko app to the GitHub repository "Battleship-Game"
 5) Clicked on "Manually Deploy"
 
+Link to live version of this project on the Heroku app: 
 https://battleship-game-db.herokuapp.com/
 
 ### Steps for cloning branch
