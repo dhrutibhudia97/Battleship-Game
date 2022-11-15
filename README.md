@@ -13,7 +13,7 @@ The purpose of this game is to entertain the user with no prior knowledge needed
 
 ## The Rules Of The Game
 
-Battleships game is based on a 2 player board game in which users take turns to guess where the ship is on their game board and if they guess correctly they destroy the ship. More info about this game can be found here: https://en.wikipedia.org/wiki/Battleship_(game)
+The battleships game is based on a 2-player board game in which users take turns to guess where the ship is on their opponent's game board and if they guess correctly they destroy the ship.
 
 This game varies slightly by firstly being 1-player so the user is just guessing where the computer's ships are.
 The different symbols on the board represent the different states the locations on the board can be in.
@@ -21,7 +21,7 @@ The different symbols on the board represent the different states the locations 
 - Initially, the board is printed, and all positions are filled with "o" which represents a space that can be hit.
 - Once the users guess a valid row and column number, this coordinate on the board is checked to see if that position is empty in which case the "o" turns to "-" representing a wrong guess. 
 - If the location they hit has a ship the "o" turns into "x" which represents a ship that has been hit.
-- To win this game the user needs to hit all 5 computer ships and get 5 "x" on their board before their 20 turns are finished.
+- To win this game the user needs to hit all 5 computer ships and get 5 "x" on their board before their turns are finished.
 
 
 ## Features
@@ -47,7 +47,8 @@ determines how many turns they get to guess the location of the ships.
 
 #### The User Input Validator 
 - The row and column number input is checked to see if any data has been inputted, then checking to see if it is an integer. If it isn't an integer then the user is asked to input the row or column number again.
-- If it is an integer it is checked to see if it is a positive number and if it is smaller than the board grid size. If it isn't the user is asked to input the row or column number again.
+- If it is an integer it is checked to see if it is a positive number and if it is smaller than the board grid size. If it isn't the user is asked to input a row or column number again that fits the board size. 
+- If it is a negative integer, the user is asked to input a positive integer.
 
 ![incorrect user input](https://user-images.githubusercontent.com/107180641/202028730-8056180b-66e7-4023-b91f-67161d5c9f62.png)
 
@@ -56,12 +57,6 @@ determines how many turns they get to guess the location of the ships.
 #### The Game Function Validator
 - User inserts name which will be printed on top of the game board for each round.
 - The same coordinates cannot be entered again. If it has, the turns left and the user score doesn't change. The user is told they have already hit this location and asked to insert another value.
-- If the coordinate hasn't been entered before, it is checked to see if it hits or misses a ship, deducting 1 from turns left and adding 1 to the user score accordingly.
-- The game function stops running when either there are 0 turns left or the user score is 5. The last game is printed and the game ends.
-
-Hitting a ship.
-
-![hit ship](https://user-images.githubusercontent.com/107180641/202029338-bf6d9cb9-a0b0-444e-8089-41d79a94c88f.png)
 
 Selecting same wrong guess again.
 
@@ -71,12 +66,20 @@ Selecting same hit ship again.
 
 ![already hit ship](https://user-images.githubusercontent.com/107180641/202029491-0f84a030-db7b-468b-9350-2a22b3f6b138.png)
 
+- If the coordinate hasn't been entered before, it is checked to see if it hits or misses a ship, deducting 1 from turns left and adding 1 to the user score accordingly.
+
+Hitting a ship.
+
+![hit ship](https://user-images.githubusercontent.com/107180641/202029338-bf6d9cb9-a0b0-444e-8089-41d79a94c88f.png)
+
+- The game function stops running when either there are 0 turns left or the user score is 5. The last game is printed and the game ends.
+
 
 #### Game board saves previous coordinates from each round
 - All positions that have been chosen on the board get turned to "x" or "-" so in the game function the same coordinates can't be entered multiple times.
 
 #### Printing final board
-- This prints board at the end of the game. It shows the location of all the un-hit ships represented with "X" if the user loses the game. If the user wins, the board with show all 5 hit ships represented with "x"
+- This prints board at the end of the game. It shows the location of all the un-hit ships represented with "X" if the user loses the game. If the user wins, the board with show all 5 hit ships represented with "x". For the users that lose the game, being able to see where the un-hit ships are will help them see how the game is purely based on luck and motivates them to play again to see if they win.
 
 ![game over board](https://user-images.githubusercontent.com/107180641/202029863-58b976fa-6e2c-47fe-a28f-a717d88795c5.png)
 
@@ -97,7 +100,7 @@ The class "BoardStates" is used which contains enumerations for the different st
 |------------------------------------|--------------------------------------|-----------------------------|
 |User validation function excepting incorrect input type| Entered nothing, string and floats   | ✓ User asked to enter an integer|
 |User validation function excepting number in the board size range | Entering negative integers and integers > 5 | ✓ Message printed to tell the user they cannot enter negative values or numbers bigger than the board size |
-| Start game function not decreasing turns left if the same wrong guess coordinate has been selected| Entering the same coordinates for a missed guess| ✓ Message printed telling user they have already guessed that coordinate and to try again|
+| Start game function not decreasing turns left if the same wrong guess coordinate has been selected| Entering the same coordinates for a missed guess| ✓ Message printed telling user they have already guessed that coordinate and to try again. The turns left does not decrease.|
 | Start game function not increasing user score multiple times if the same ship is hit| Entering same coordinates for a known ship location| ✓ Message shows telling user they have already hit this ship and to guess again. User score does not increase and the number of turns left does not decrease| 
 |Start game function when the user loses the game| Entering 20 coordinate guesses and not hitting 5 ships | ✓ Results in a message telling the user they have lost the game and they have 0 turns left |
 |Start game function when the user wins the game | Entering coordinates and hitting all 5 ships before the turns left = 0 | ✓ Results in a message congratulating the user and telling them they hit all 5 ships and have won the game.| 
