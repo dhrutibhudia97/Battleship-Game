@@ -141,13 +141,13 @@ def generate_and_place_random_ships(game_board):
     coordinates generated aren't the same.
     """
     for _ in range(NO_OF_SHIPS):
-        target_row = randint(0, BOARD_GRID_SIZE - 1)
-        target_col = randint(0, BOARD_GRID_SIZE - 1)
-        while game_board[target_row][target_col] == BoardStates.SHIP_ALIVE.value:
-            target_row = randint(0, BOARD_GRID_SIZE - 1)
-            target_col = randint(0, BOARD_GRID_SIZE - 1)
+        ship_row = randint(0, BOARD_GRID_SIZE - 1)
+        ship_col = randint(0, BOARD_GRID_SIZE - 1)
+        while game_board[ship_row][ship_col] == BoardStates.SHIP_ALIVE.value:
+            ship_row = randint(0, BOARD_GRID_SIZE - 1)
+            ship_col = randint(0, BOARD_GRID_SIZE - 1)
 
-        game_board[target_row][target_col] = BoardStates.SHIP_ALIVE.value
+        game_board[ship_row][ship_col] = BoardStates.SHIP_ALIVE.value
 
 
 def user_input():
